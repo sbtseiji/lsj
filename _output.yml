@@ -1,0 +1,34 @@
+bookdown::gitbook:
+  css: jamovi.css
+  toc_depth: 2
+  split_by: chapter
+  split_bib: no  
+  includes:
+    in_header: mathjax.html
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./"><span class="jamovi">jamovi</span>で学ぶ心理統計</a></li>
+      after: |
+        <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+        <li><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></li>
+#    download: ["pdf"]
+    sharing:
+      facebook: yes
+      twitter: yes
+      google: yes
+      weibo: no
+      instapper: no
+      vk: no
+#bookdown::pdf_book:
+#  includes:
+#    in_header: preamble.tex
+#  dev: "quartz_pdf"
+#  latex_engine: lualatex
+#  citation_package: natbib
+#  keep_tex: yes
+#  pandoc_args: --top-level-division=chapter
+
+#bookdown::epub_book:
+#  dev: svglite

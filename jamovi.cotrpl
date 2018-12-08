@@ -1,0 +1,142 @@
+{
+  "replacements" : [
+    {
+      "findString" : "\\\\rtext\\{(.*?)\\}",
+      "replacementString" : "<span class=\"rtext\">$1<\/span>",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\$(.*?)\\$",
+      "replacementString" : "\\\\($1\\\\)",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\\\filename\\{(.*?)\\}",
+      "replacementString" : "<span class=\"filename\">$1<\/span>",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\\\keyterm\\{(.*?)\\}",
+      "replacementString" : "<span class=\"keyterm\">$1<\/span>",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\\\ref\\{(.*?)\\}",
+      "replacementString" : "\\\\@ref($1)",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\label{sec",
+      "replacementString" : " {#sec"
+    },
+    {
+      "findString" : "\\label{ch",
+      "replacementString" : " {#ch"
+    },
+    {
+      "findString" : "\\\\epsfig.*img\/(.*?\/(.*?))\\.(pdf|png|jpg|eps).*\\=(\\d+cm)\\}",
+      "replacementString" : "```\\{r $2, warning=FALSE, echo=FALSE, out.width='$4', fig.align='center', fig.cap='キャプション', echo=FALSE}\nknitr::include_graphics(\"img\/$1.png\")\n```",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\HR",
+      "replacementString" : "\n"
+    },
+    {
+      "findString" : "\\\\vspace\\{.*\\}",
+      "replacementString" : "",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\(\\)",
+      "replacementString" : "\n\n$$\n\n"
+    },
+    {
+      "findString" : "12cm",
+      "replacementString" : "57%"
+    },
+    {
+      "findString" : "14cm",
+      "replacementString" : "67%"
+    },
+    {
+      "findString" : "11cm",
+      "replacementString" : "52%"
+    },
+    {
+      "findString" : "10cm",
+      "replacementString" : "47.5%"
+    },
+    {
+      "findString" : "8cm",
+      "replacementString" : "38%"
+    },
+    {
+      "findString" : "7cm",
+      "replacementString" : "33%"
+    },
+    {
+      "findString" : "6cm",
+      "replacementString" : "28.5%"
+    },
+    {
+      "findString" : "\\\\(",
+      "replacementString" : "$"
+    },
+    {
+      "findString" : "\\\\)",
+      "replacementString" : "$"
+    },
+    {
+      "findString" : "\\_",
+      "replacementString" : ""
+    },
+    {
+      "findString" : "\\bar",
+      "replacementString" : "\\overline"
+    },
+    {
+      "findString" : "\\R",
+      "replacementString" : "<span class=\"R\">R<\/span>"
+    },
+    {
+      "findString" : "\\hspace*{2cm} --",
+      "replacementString" : "　　　　　---"
+    },
+    {
+      "findString" : "\\begin{rblock1}",
+      "replacementString" : "```{block2, type='rblock1'}"
+    },
+    {
+      "findString" : "\\end{rblock1}",
+      "replacementString" : "```\n"
+    },
+    {
+      "findString" : "\\bigskip",
+      "replacementString" : ""
+    },
+    {
+      "findString" : "\\newpage",
+      "replacementString" : ""
+    },
+    {
+      "findString" : "\\noindent ",
+      "replacementString" : ""
+    },
+    {
+      "findString" : "\\\\rtextverb\\\\#(.*?)\\\\#",
+      "replacementString" : "<span class=\"rtext\">$1<\/span>",
+      "usesRegularExpression" : true
+    },
+    {
+      "findString" : "\\\\rtextoutput\\{(.*)\\}",
+      "replacementString" : "<span class=\"rtextoutput\">$1<\/span>"
+    }
+  ],
+  "settings" : {
+    "matchesFullWord" : false,
+    "regexOptions" : 16,
+    "textualOptions" : 0,
+    "unescapesReplacementString" : true
+  }
+}

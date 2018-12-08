@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'biko';
+    src: url('biko_bold.woff');
+}
+
+.center { margin: 0 auto; width: 600px; }
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+em {
+  color: crimson;
+  font-style: normal !important;	
+  font-weight: bold;
+}
+
+.keyterm {
+  color: teal;
+  font-weight: bold;
+  font-style: normal;	
+}
+
+rt{
+	font-size: 0.5em !important;
+}
+
+.footnotes {
+	font-size: 0.9em !important;
+}
+
+.R {
+	color: #1d63b4;
+	font-weight: bold;
+}
+
+.jamovi{
+	color: #3b69a3;
+	font-family: 'biko';
+}
+
+.filename {
+	font-family: "Courier New", Courier, mono;
+	color: maroon;
+}
+
+.rtext {
+	font-family: "Courier New", Courier, mono;
+	color: navy;
+}
+
+.rtextoutput {
+	font-family: "Courier New", Courier, mono;
+	color: #323232;
+}
+
+caption,.caption{
+	font-size: 0.9em !important;
+	color: gray !important;
+}
+
+.rblock1{
+	font-family:monospace,serif;font-size:1em;
+	padding:.2em;
+	/*font-size:.85em;*/
+	background-color:#f7f7f7;
+	margin-bottom: 1em;
+}
+
+dt {
+	font-style: normal !important;
+	color: #555555 !important;	
+	font-size: 0.9em !important;
+}
+
+dd {
+	color: #555555;
+	font-size: 0.9em !important;
+}
+
+.hypothesis{
+	text-align: center;
+	padding-bottom: 1ex;
+}
