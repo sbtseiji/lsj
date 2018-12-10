@@ -122,7 +122,7 @@ knitr::include_graphics("img/introj/computedvariable.png",auto_pdf = TRUE)
 
 ### CSVファイルの読み込み
 
-CSVとも呼ばれるコンマ区切りテキスト形式は非常によく使われるデータ形式で，その拡張子は<span class="filename">.csv</span>です。CSVファイルは単純なテキストファイルなので，そこには単にデータが表形式で列記されているだけです。その例を図\@ref(fig:booksalescsv)に示しました。これは<a href="data/booksales.csv" download="booksales.csv"><span class="filename">booksales.csv</span></a>というファイルで，私が作成したものです（ファイル名をクリックするとファイルをダウンロードできます）。見てわかるように，各行には各月の書籍販売データが記録されています。最初の行に記録されているのは実際のデータではなく，変数の名前です。
+CSVとも呼ばれるコンマ区切りテキスト形式は非常によく使われるデータ形式で，その拡張子は<span class="filename">.csv</span>です。CSVファイルは単純なテキストファイルなので，そこには単にデータが表形式で列記されているだけです。その例を図\@ref(fig:booksalescsv)に示しました。これは[<span class="filename">booksales.csv</span>](data/booksales.csv)というファイルで，私が作成したものです（ファイル名を右クリックしてファイルをダウンロードしてください）。見てわかるように，各行には各月の書籍販売データが記録されています。最初の行に記録されているのは実際のデータではなく，変数の名前です。
 
 ```{r booksalescsv, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">booksales.csv</span>データファイル。左側の画面は表計算ソフト（OpenOffice）で開いた場合の様子で，データが単純な表形式であることがわかる。右の画面は同じファイルを標準的なテキストエディタ（Macのテキストエディット）で開いたときの様子で，ファイルのフォーマット形式を示している。表のデータは二重引用符（\"）で囲まれ，コンマで区切られている。', echo=FALSE}
 knitr::include_graphics("img/mechanics/booksalescsv.png",auto_pdf = TRUE)

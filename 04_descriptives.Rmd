@@ -3,7 +3,7 @@
 記述統計 {#ch:descriptives}
 =============================================
 
-新しいデータセットを取得したら最初に行うべきことの1つに，理解しやすい形でデータを簡潔に要約するということがあります。その役目を担っているのが<span class="keyterm">記述統計</span>です（これとは対照的なものとして推測統計があります）。実際のところ，多くの人は「統計」という用語を記述統計と同じ意味で使用しています。本章で扱うトピックがまさにそれなのですが，詳細の説明に入る前に，なぜ記述統計が必要なのかについて理解しておきましょう。そのために，<a href="data/aflsmall_margins.csv" download="aflsmall_margins.csv"><span class="filename">aflsmall_margins.csv</span></a>ファイルを開いてファイルにどんな変数が格納されているのかを見てみます（ファイル名をクリックするとファイルをダウンロードできます）。
+新しいデータセットを取得したら最初に行うべきことの1つに，理解しやすい形でデータを簡潔に要約するということがあります。その役目を担っているのが<span class="keyterm">記述統計</span>です（これとは対照的なものとして推測統計があります）。実際のところ，多くの人は「統計」という用語を記述統計と同じ意味で使用しています。本章で扱うトピックがまさにそれなのですが，詳細の説明に入る前に，なぜ記述統計が必要なのかについて理解しておきましょう。そのために，[<span class="filename">aflsmall_margins.csv</span>](data/aflsmall_margins.csv)ファイルを開いてファイルにどんな変数が格納されているのかを見てみます（ファイル名を右クリックしてファイルをダウンロードしてください）。
 
 
 ```{r aflsmallmargins, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">aflsmall_margins.csv</span>に格納されている変数を<span class="jamovi">jamovi</span>で表示したところ', echo=FALSE}
@@ -372,7 +372,7 @@ $$
 グループごとの記述統計 {#sec:groupdescriptives}
 ------------------------------------------------------------------------------
 
-何らかのグループ変数を使ってグループごとに記述統計量を見たいというケースもよくあることでしょう。これは<span class="jamovi">jamovi</span>ではとても簡単にできます。たとえば，<span class="rtext">clin.trial</span>データの記述統計量を，<span class="rtext">therapy</span>の種類ごとに見たいとします。これはここで初めて使う新しいデータセットです。このデータは<a href="data/clinicaltrial.csv" download="clinicaltrial.csv"><span class="filename">clinicaltrial.csv</span></a>ファイルに格納されています。このファイルは第\@ref(ch:anova)章で何度も使用することになるものです（このデータの詳しい説明はその章の最初にあります）。ではこのファイルを読み込んでみましょう（ファイル名をクリックするとダウンロードできます）。次のようになるはずです。
+何らかのグループ変数を使ってグループごとに記述統計量を見たいというケースもよくあることでしょう。これは<span class="jamovi">jamovi</span>ではとても簡単にできます。たとえば，<span class="rtext">clin.trial</span>データの記述統計量を，<span class="rtext">therapy</span>の種類ごとに見たいとします。これはここで初めて使う新しいデータセットです。このデータは[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)ファイルに格納されています。このファイルは第\@ref(ch:anova)章で何度も使用することになるものです（このデータの詳しい説明はその章の最初にあります）。ではこのファイルを読み込んでみましょう（ファイル名を右クリックしてダウンロードしてください）。次のようになるはずです。
 
 
 ```{r clinicaltrial, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">clinicaltrial.csv</span>ファイルに格納されている変数を<span class="jamovi">jamovi</span>で表示した様子。', echo=FALSE}
