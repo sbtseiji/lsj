@@ -22,8 +22,6 @@ description: "『jamoviで学ぶ心理統計』は心理学専攻の統計法入
 
 芝田 征司
 
-2018年12月
-
 ### 第0.65版へに寄せて {-}
 
 本書はDanielle Navarro氏による素晴らしい教科書『Learning statistics with R（Rで学ぶ統計法）』の分岐版で，分析に使用する統計ソフトウェアや例を<span class="jamovi">jamovi</span>用に置き換えたものです。<span class="R">R</span>は強力な統計プログラミング言語ですが，統計法入門クラスの教師や学生たちが簡単に使えるようなものではありません。マウスをクリックして使えるソフトウェアを好む教師や学生たちにとっては，<span class="jamovi">jamovi</span>はまさにうってつけでしょう。<span class="jamovi">jamovi</span>は2つの側面から<span class="R">R</span>の使用を簡素化するものです。その1つは，マウスクリックによるグラフィカル・ユーザーインターフェース（GUI）を提供していること，そしてもう1つはさまざまな機能を組み合わせてSPSSやSASを使用するときのような感覚で<span class="R">R</span>を使用できるようにしてくれていることです。ここで重要なのは，<span class="jamovi">jamovi</span>が無料かつオープンなソフトウェアであるということです。これは<span class="jamovi">jamovi</span>のもつ非常に重要な部分です。<span class="jamovi">jamovi</span>は，科学者のコミュニティが科学者のコミュニティのために作成したものなのです。
@@ -45,8 +43,6 @@ David Foxcroft
 -   最大の変化はライセンス形態です。本版からクリエイティブコモンズ・ライセンス（表示 - 継承 4.0 国際）の下で公開し，すべてのソースファイルを関連するGitHubのレポジトリに置くことにしました。これで誰もが自由に使えるようになりました。
 
 だから，誰か<span class="rtext">tidyverse</span>の活用方法を書き加えた版を作ってくれるといいなと思ったりします。どうやら<span class="R">R</span>の世界では，最近これがとても重要になっているようですので。
-
-敬具
 
 Danielle Navarro
 
