@@ -6,7 +6,7 @@
 新しいデータセットを取得したら最初に行うべきことの1つに，理解しやすい形でデータを簡潔に要約するということがあります。その役目を担っているのが<span class="keyterm">記述統計</span>です（これとは対照的なものとして推測統計があります）。実際のところ，多くの人は「統計」という用語を記述統計と同じ意味で使用しています。本章で扱うトピックがまさにそれなのですが，詳細の説明に入る前に，なぜ記述統計が必要なのかについて理解しておきましょう。そのために，[<span class="filename">aflsmall_margins.csv</span>](data/aflsmall_margins.csv)ファイルを開いてファイルにどんな変数が格納されているのかを見てみます（ファイル名を右クリックしてファイルをダウンロードしてください）。
 
 
-```{r aflsmallmargins, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">aflsmall_margins.csv</span>に格納されている変数を<span class="jamovi">jamovi</span>で表示したところ', echo=FALSE}
+```{r aflsmallmargins, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='[<span class="filename">aflsmall_margins.csv</span>](data/aflsmall_margins.csv)に格納されている変数を<span class="jamovi">jamovi</span>で表示したところ', echo=FALSE}
 knitr::include_graphics("img/descriptives/aflsmall_margins.png")
 ```
 
@@ -154,9 +154,9 @@ plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
 
 ### 最頻値 {#sec:mode}
 
-サンプルの最頻値は非常に単純です。これはもっとも頻繁に出現する値のことです。これを説明するために，別のAFLデータを見てみましょう。決勝に進出した回数が一番多いのはどのチームでしょうか。<span class="filename">aflsmall_finalists.csv</span>ファイルを開いて<span class="rtext">afl.finalists</span>変数を見てください。図\@ref(fig:aflsmallfinalists)のようになっているはずです。この変数には1987年から2010年までに行われた決勝戦200試合に出場した全400チームの名前が含まれています。
+サンプルの最頻値は非常に単純です。これはもっとも頻繁に出現する値のことです。これを説明するために，別のAFLデータを見てみましょう。決勝に進出した回数が一番多いのはどのチームでしょうか。[<span class="filename">aflsmall_finalists.csv</span>](data/aflsmall_finalists.csv)ファイルを開いて<span class="rtext">afl.finalists</span>変数を見てください。図\@ref(fig:aflsmallfinalists)のようになっているはずです。この変数には1987年から2010年までに行われた決勝戦200試合に出場した全400チームの名前が含まれています。
 
-```{r aflsmallfinalists, warning=FALSE, echo=FALSE, out.width='64.7%', fig.align='center', fig.cap='<span class="filename">aflsmall_finalists.csv</span>ファイルに格納されている変数を<span class="jamovi">jamovi</span>で表示した様子。', echo=FALSE}
+```{r aflsmallfinalists, warning=FALSE, echo=FALSE, out.width='64.7%', fig.align='center', fig.cap='[<span class="filename">aflsmall_finalists.csv</span>](data/aflsmall_finalists.csv)ファイルに格納されている変数を<span class="jamovi">jamovi</span>で表示した様子。', echo=FALSE}
 knitr::include_graphics("img/descriptives/aflsmall_finalists.png")
 ```   
 
@@ -197,7 +197,7 @@ $$
 
 <span class="keyterm">四分位範囲</span>（IQR）は範囲と似ていますが，最大値と最小値の差を使う代わりに，25パーセンタイル値と75パーセンタイル値の差を使用します。<span class="keyterm">パーセンタイル</span>という言葉は初めて見るかもしれません。データセットの10パーセンタイル値といったときには，データの中でその値（\(x\)）よりも小さな値が全体の10％であるような値を指します。じつを言うと，すでに皆さんはこのような値を見たことがあるのです。それは中央値です。中央値はデータセットの50パーセンタイル値なのです。<span class="jamovi">jamovi</span>では，「**Exploration**（探索）」>「**Descriptives**（記述統計）」の「**Statistics**（統計量）」画面にある「**Quartiles**（四分位）」にチェックを入れるだけで簡単に25，50，75パーセンタイル値を指定することができます。
 
-```{r aflsmallmarginsiqr, warning=FALSE, echo=FALSE, out.width='35.3%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>で<span class="filename">afl.margins</span>変数の四分位数を表示した様子。', echo=FALSE}
+```{r aflsmallmarginsiqr, warning=FALSE, echo=FALSE, out.width='35.3%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>で[<span class="filename">afl.margins</span>](data/afl.margins)変数の四分位数を表示した様子。', echo=FALSE}
 knitr::include_graphics("img/descriptives/aflsmall_margins_iqr.png")
 ```   
 
@@ -372,10 +372,10 @@ $$
 グループごとの記述統計 {#sec:groupdescriptives}
 ------------------------------------------------------------------------------
 
-何らかのグループ変数を使ってグループごとに記述統計量を見たいというケースもよくあることでしょう。これは<span class="jamovi">jamovi</span>ではとても簡単にできます。たとえば，<span class="rtext">clin.trial</span>データの記述統計量を，<span class="rtext">therapy</span>の種類ごとに見たいとします。これはここで初めて使う新しいデータセットです。このデータは[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)ファイルに格納されています。このファイルは第\@ref(ch:anova)章で何度も使用することになるものです（このデータの詳しい説明はその章の最初にあります）。ではこのファイルを読み込んでみましょう（ファイル名を右クリックしてダウンロードしてください）。次のようになるはずです。
+何らかのグループ変数を使ってグループごとに記述統計量を見たいというケースもよくあることでしょう。これは<span class="jamovi">jamovi</span>ではとても簡単にできます。たとえば，<span class="rtext">clin.trial</span>データの記述統計量を，<span class="rtext">therapy</span>の種類ごとに見たいとします。これはここで初めて使う新しいデータセットです。このデータは[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)ファイルに格納されています。このファイルは第\@ref(ch:anova)章で何度も使用することになるものです（このデータの詳しい説明はその章の最初にあります）。ではこのファイルを読み込んでみましょう。次のようになるはずです。
 
 
-```{r clinicaltrial, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">clinicaltrial.csv</span>ファイルに格納されている変数を<span class="jamovi">jamovi</span>で表示した様子。', echo=FALSE}
+```{r clinicaltrial, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)ファイルに格納されている変数を<span class="jamovi">jamovi</span>で表示した様子。', echo=FALSE}
 knitr::include_graphics("img/descriptives/clinicaltrial.png")
 ```
 

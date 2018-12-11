@@ -27,7 +27,7 @@
 
 ### 1つの変数で表を作成する
 
-まずは簡単な例から始めましょう。私には小さな子供がいますので，『In the Night Garden^[訳注：イギリスの子供向け番組。]』のようなテレビ番組をよく見ます。そして[<span class="filename">nightgarden.csv</span>](data/nightgarden.csv)ファイルには，その番組での会話を私が書き留めたデータが含まれています（ファイル名を右クリックするとファイルをダウンロードできます）。このファイルにある，<span class="rtext">speaker</span>（話し手）と<span class="rtext">utterance</span>（発話）という2つの変数がここでの対象です。このデータセットを<span class="jamovi">jamovi</span>で開き，スプレッドシートでどのようなデータか見てみましょう。データは次のようになっているはずです。
+まずは簡単な例から始めましょう。私には小さな子供がいますので，『In the Night Garden^[訳注：イギリスの子供向け番組。]』のようなテレビ番組をよく見ます。そして[<span class="filename">nightgarden.csv</span>](data/nightgarden.csv)ファイルには，その番組での会話を私が書き留めたデータが含まれています。このファイルにある，<span class="rtext">speaker</span>（話し手）と<span class="rtext">utterance</span>（発話）という2つの変数がここでの対象です。このデータセットを<span class="jamovi">jamovi</span>で開き，スプレッドシートでどのようなデータか見てみましょう。データは次のようになっているはずです。
 
 「speaker（話し手）」 変数：\
 <span class="rtext">upsy-daisy upsy-daisy upsy-daisy upsy-daisy tombliboo tombliboo makka-pakka \
@@ -253,7 +253,7 @@ kable(dt, align = c('c','c','c','c'), escape = FALSE,caption='<span class="jamov
 
 > 「恐竜はかっこいい」という文について，あなたはどの程度その通りだと思いますか。「1（まったくその通りでない）」から「7（まったくその通りである）」でお答えください。
 
-では，そのデータを読み込んでみてみましょう。[<span class="filename">likert.omv</span>](data/likert.omv)というデータファイルでは，10人の人々のリカート尺度での反応得点が1つの変数に収められています（ファイル名を右クリックするとファイルをダウンロードできます）。ただ，このままでは反応データとしてあまりいい形でないかもしれません。反応尺度は左右対称になっていますので，中間点を0（どちらでもない）として，左右の両端をそれぞれ\(-3\)（まったくその通りでない）と\(+3\)（まったくその通りである）とした方がわかりやすそうです。そのような形でデータを記録しておけば，それがどのような意味を持っているのかをよりうまく反映した形になります。このような変換はとても簡単です。元の値からそれぞれ4を引けばいいのです。<span class="jamovi">jamovi</span>では，こうした変換は新しい変数を計算させることで可能です。「**Data**（データ）」>「**Compute**（計算）」と進むと，新しい変数がスプレッドシートに追加されるのがわかります。この変数の名前は<span class="rtext">likert.centred</span>としましょう（この通り名前を入力してください）そして，図\@ref(fig:likertraw)にあるように数式ボックスに「<span class="rtext">likert.raw - 4</span>」と式を入力してください。
+では，そのデータを読み込んでみてみましょう。[<span class="filename">likert.omv</span>](data/likert.omv)というデータファイルでは，10人の人々のリカート尺度での反応得点が1つの変数に収められています。ただ，このままでは反応データとしてあまりいい形でないかもしれません。反応尺度は左右対称になっていますので，中間点を0（どちらでもない）として，左右の両端をそれぞれ\(-3\)（まったくその通りでない）と\(+3\)（まったくその通りである）とした方がわかりやすそうです。そのような形でデータを記録しておけば，それがどのような意味を持っているのかをよりうまく反映した形になります。このような変換はとても簡単です。元の値からそれぞれ4を引けばいいのです。<span class="jamovi">jamovi</span>では，こうした変換は新しい変数を計算させることで可能です。「**Data**（データ）」>「**Compute**（計算）」と進むと，新しい変数がスプレッドシートに追加されるのがわかります。この変数の名前は<span class="rtext">likert.centred</span>としましょう（この通り名前を入力してください）そして，図\@ref(fig:likertraw)にあるように数式ボックスに「<span class="rtext">likert.raw - 4</span>」と式を入力してください。
 
 
 ```{r likertraw, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>で新しい変数を計算させている様子。', echo=FALSE}
@@ -310,14 +310,14 @@ knitr::include_graphics("img/mechanics/agecats.png")
 
 ### 複数の変数に変換を適用する
 
-場合によっては，1つ以上の変数に対して同じ変数変換を行いたいということがあります。たとえば，複数の質問紙項目について同じ方法で再計算や記録を行ったりする場合です。<span class="jamovi">jamovi</span>の嬉しい機能の1つに，「**Data**（データ）」>「**Transform**（変換）」を用いて変数の変換を行えるという点があります。これは保存したり複数の変数に適用したりできるのです。最初のリカート尺度の例に戻りましょう。10人の回答値が１つの変数に収められている<span class="filename">likert.omv</span>ファイルを使用します。保存したり複数の変数に適用したりできる変換を作成するには（これと同じような変数が複数あるという仮定します），まずスプレッドシートビューで最初に変換を作成する変数を選択（クリック）します。この例では，<span class="rtext">likert.raw</span>変数です。次に，「**Data**（データ）」の「**Transform**（変換）」ボタンをクリックします。すると，図\@ref(fig:transform1)のような画面が表示されるはずです。
+場合によっては，1つ以上の変数に対して同じ変数変換を行いたいということがあります。たとえば，複数の質問紙項目について同じ方法で再計算や記録を行ったりする場合です。<span class="jamovi">jamovi</span>の嬉しい機能の1つに，「**Data**（データ）」>「**Transform**（変換）」を用いて変数の変換を行えるという点があります。これは保存したり複数の変数に適用したりできるのです。最初のリカート尺度の例に戻りましょう。10人の回答値が１つの変数に収められている[<span class="filename">likert.omv</span>](data/likert.omv)ファイルを使用します。保存したり複数の変数に適用したりできる変換を作成するには（これと同じような変数が複数あるという仮定します），まずスプレッドシートビューで最初に変換を作成する変数を選択（クリック）します。この例では，<span class="rtext">likert.raw</span>変数です。次に，「**Data**（データ）」の「**Transform**（変換）」ボタンをクリックします。すると，図\@ref(fig:transform1)のような画面が表示されるはずです。
 
 
 ```{r transform1, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='「**Transform**（変換）」コマンドによる変数変換。', echo=FALSE}
 knitr::include_graphics("img/mechanics/transform1.png")
 ```
 
-新しい変数に名前をつけます。ここでは<span class="rtext">opinion.strength</span>としておきましょう。そして，「**using transform**（変換を使用）」のプルダウンメニューから「**Create New Transform...**（新規に変換を作成）」を選択します。ここで新しい変換を作成し，名前をつけると，それを好きなだけ他の変数に再適用することができます。変換には，自動的に「Transform 1」という名前がつけられます（なんとも独創的な名前ですよね。でも変更したければ変更できますよ。） そして図\@ref(fig:transform2)のように数式ボックスに「<span class="rtext">ABS(\$source - 4)</span>」という式を入力し，キーボードのEnterキー（Returnキー）を押します。するとほら，あっという間に新たな変換が作成され，それが<span class="rtext">likert.raw</span>に適用されました。いい感じ，でしょ？ ここで，式の中で変数名の代わりに「<span class="rtext">\$source</span>」という表現を用いてる点に注意してください。これは，複数の変数に対して同じ変換を適用できるようにするための書き方です。その際に変換元になる変数の部分は，「<span class="rtext">\$source</span>」という書き方をしておく必要があるのです。作成した変換は保存していつでも使うことができます（データセットを<span class="filename">.omv</span>ファイルとして保存した場合です。そうでないと変換は保存されません）。
+新しい変数に名前をつけます。ここでは<span class="rtext">opinion.strength</span>としておきましょう。そして，「**using transform**（変換を使用）」のプルダウンメニューから「**Create New Transform...**（新規に変換を作成）」を選択します。ここで新しい変換を作成し，名前をつけると，それを好きなだけ他の変数に再適用することができます。変換には，自動的に「Transform 1」という名前がつけられます（なんとも独創的な名前ですよね。でも変更したければ変更できますよ。） そして図\@ref(fig:transform2)のように数式ボックスに「<span class="rtext">ABS(\$source - 4)</span>」という式を入力し，キーボードのEnterキー（Returnキー）を押します。するとほら，あっという間に新たな変換が作成され，それが<span class="rtext">likert.raw</span>に適用されました。いい感じ，でしょ？ ここで，式の中で変数名の代わりに「<span class="rtext">\$source</span>」という表現を用いてる点に注意してください。これは，複数の変数に対して同じ変換を適用できるようにするための書き方です。その際に変換元になる変数の部分は，「<span class="rtext">\$source</span>」という書き方をしておく必要があるのです。作成した変換は保存していつでも使うことができます（データセットを[<span class="filename">.omv</span>](data/.omv)ファイルとして保存した場合です。そうでないと変換は保存されません）。
 
 
 ```{r transform2, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>での変換の指定。独創的な「Transform 1」という名前で作成される。', echo=FALSE}
@@ -333,7 +333,7 @@ knitr::include_graphics("img/mechanics/transform3.png")
 その他の数学関数および演算子 {#sec:mathfunc}
 ---------------------------------------------------------------------
 
-セクション\@ref(sec:transform)では，変数変換の基本的な考え方に触れ，そうした変数変換のほとんどは簡単な数学関数や演算子で構成されていることを説明しました。このセクションでは，現実場面でのデータ分析にとって非常に役立つその他の数学的関数や算術演算子について説明しておこうと思います。表\@ref(tab:mathfunc)は，ここで取りあげるさまざまな数学関数の要約です^[ボックス・コックス変換についてはここでの説明は省略します。詳しくは\@ref(subsec:boxcox)を参照してください。]。これらはさまざまな関数のうちのごく一部でしかありませんが，これらはデータ分析では日常的に使用されることの多いものであり，どれも<span class="jamovi">jamovi</span>で使用できるものです。
+セクション\@ref(sec:transform)では，変数変換の基本的な考え方に触れ，そうした変数変換のほとんどは簡単な数学関数や演算子で構成されていることを説明しました。このセクションでは，現実場面でのデータ分析にとって非常に役立つその他の数学的関数や算術演算子について説明しておこうと思います。表\@ref(tab:mathfunc)は，ここで取りあげるさまざまな数学関数の要約です^[ボックス・コックス変換についてはここでの説明は省略します。詳しくは\@ref(sec:regressionnormality)を参照してください。]。これらはさまざまな関数のうちのごく一部でしかありませんが，これらはデータ分析では日常的に使用されることの多いものであり，どれも<span class="jamovi">jamovi</span>で使用できるものです。
 
 Table: (#tab:mathfunc)  数学関数の一覧
 

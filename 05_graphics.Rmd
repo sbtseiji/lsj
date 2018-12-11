@@ -56,7 +56,7 @@ knitr::include_graphics("img/graphics/boxplot2.png")
 
 ### 複数の箱ひげ図を描画する  {#sec:multipleboxplots}
 
-最後にあと1つだけ。複数の箱ひげ図を一度に表示したい場合はどうすればよいでしょうか。たとえば，AFLの得点差データについて，2010年のデータだけでなく1987年から2010年までのデータを一度に箱ひげ図にしたいような場合です。そのためにはまずそのデータを探してこないといけませんが，そのデータは[<span class="filename">aflsmall2.csv</span>](data/aflsmall2.csv)ファイルに格納されています。このファイルを<span class="jamovi">jamovi</span>に読み込んでどうなるか見てみましょう（ファイル名を右クリックしてファイルをダウンロードしてください）。これはかなり巨大なデータセットです。変数には4296試合分のデータが格納されています。<span class="jamovi">jamovi</span>を使ってやりたいことは，<span class="rtext">margin</span>（得点差）変数の箱ひげ図を作成することですが，その際に<span class="rtext">year</span>（年）ごとに作図する必要があります。そのためには，図\@ref(fig:splitfile1)にあるように<span class="rtext">year</span>変数を「**Split by**（グループ変数）」に移動します。
+最後にあと1つだけ。複数の箱ひげ図を一度に表示したい場合はどうすればよいでしょうか。たとえば，AFLの得点差データについて，2010年のデータだけでなく1987年から2010年までのデータを一度に箱ひげ図にしたいような場合です。そのためにはまずそのデータを探してこないといけませんが，そのデータは[[<span class="filename">aflsmall2.csv</span>](data/aflsmall2.csv)](data/aflsmall2.csv)ファイルに格納されています。このファイルを<span class="jamovi">jamovi</span>に読み込んでどうなるか見てみましょう（ファイル名を右クリックしてファイルをダウンロードしてください）。これはかなり巨大なデータセットです。変数には4296試合分のデータが格納されています。<span class="jamovi">jamovi</span>を使ってやりたいことは，<span class="rtext">margin</span>（得点差）変数の箱ひげ図を作成することですが，その際に<span class="rtext">year</span>（年）ごとに作図する必要があります。そのためには，図\@ref(fig:splitfile1)にあるように<span class="rtext">year</span>変数を「**Split by**（グループ変数）」に移動します。
 
 ```{r splitfile1, warning=FALSE, echo=FALSE, out.width='58.8%', fig.align='center', fig.cap='「Split by（グループ変数）」の設定', echo=FALSE}
 knitr::include_graphics("img/graphics/splitfile1.png")

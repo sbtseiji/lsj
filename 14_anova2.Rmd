@@ -191,7 +191,7 @@ $$
 \mbox{SS}_{B} = (N \times R) \sum_{c=1}^C \left( \overline{Y}_{.c} - \overline{Y}_{..} \right)^2
 $$
 
-これらの式で得られる値を先ほどのセクションで<span class="jamovi">jamovi</span>で算出した値と比べてみましょう。この種の計算作業には表計算ソフトが役立ちます。皆さんも挑戦してみてください。私が計算に使用したExcelファイルが<span class="filename">clinicaltrialfactorialanova.xls</span>にあるので，こちらを見てもらっても構いません^[訳注：いちいち別のソフトを起動するのが面倒であれば，<span class="jamovi">jamovi</span>でもできます。これを<span class="jamovi">jamovi</span>で行った場合の結果は<span class="filename">clinicaltrialfactorialanova.omv</span>ファイルで見られます。]。
+これらの式で得られる値を先ほどのセクションで<span class="jamovi">jamovi</span>で算出した値と比べてみましょう。この種の計算作業には表計算ソフトが役立ちます。皆さんも挑戦してみてください。私が計算に使用したExcelファイルが[<span class="filename">clinicaltrialfactorialanova.xls</span>](data/clinicaltrialfactorialanova.xls)にあるので，こちらを見てもらっても構いません^[訳注：いちいち別のソフトを起動するのが面倒であれば，<span class="jamovi">jamovi</span>でもできます。これを<span class="jamovi">jamovi</span>で行った場合の結果は[<span class="filename">clinicaltrialfactorialanova.omv</span>](data/clinicaltrialfactorialanova.omv)ファイルで見られます。]。
 
 まず，投薬条件（<span class="rtext">drug</span>）の主効果に関連した2乗和を計算しましょう。各グループには\(N=3\)人の参加者がいて，\(C=2\)の異なる心理療法条件があります。別の言い方をすれば，それぞれの薬を投与されているのは\(3 \times 2 = 6\)人です。この値を計算すると，投薬条件（<span class="rtext">drug</span>）の2乗和は3.45という値になりました。当然ながら，これはすでに図\@ref(fig:factorialanova3)で見た分散分析表における投薬条件要因の2乗和と同じです。
 
@@ -215,7 +215,7 @@ $$
 
 残差2乗和を直接計算する式ももちろんあるのですが，このように考えた方がわかりやすいと思います。これを残差と呼ぶのはこれが残り物のばらつきだからで，上の式はそのことをとてもはっきり示しているからです。なお，回帰分析の章で使用した用語を用いると，\(\mbox{SS}_A + \mbox{SS}_B\)は一般に「分散分析モデル（ANOVAモデル）」で説明される分散と呼ばれ，これはSS\(_M\)と表記されます。また，こうしたことから「全体の2乗和はモデルの2乗和と残差の2乗和の和に等しい」というような言い方もよく使われます。本章の後半では，これが単なる表面的な類似性ではないということについて説明します。分散分析と回帰分析は，実際には中身は同じものなのです。
 
-とにかく，SS\(_R\)をこの式で計算し，<span class="jamovi">jamovi</span>の分散分析表と同じ答えになるということを確認しておきましょう。この計算は表計算ソフトを使ってやるととても簡単です（<span class="filename">clinicaltrialfactorialanova.xls</span>ファイルを参照）^[訳注：全体の2乗和は<span class="jamovi">jamovi</span>でも計算できますし，そちらの方が簡単だと思います（<span class="filename">clinicaltrialfactorialanova.omv</span>ファイルを参照）。]。1つ前の式を使って全体の2乗和を求め（そうすると全体の2乗和は4.85になります）そして先ほどの式で残差2乗和を求めると0.92となりました。ここでもまた，答えは<span class="jamovi">jamovi</span>の結果と同じです。
+とにかく，SS\(_R\)をこの式で計算し，<span class="jamovi">jamovi</span>の分散分析表と同じ答えになるということを確認しておきましょう。この計算は表計算ソフトを使ってやるととても簡単です（[<span class="filename">clinicaltrialfactorialanova.xls</span>](data/clinicaltrialfactorialanova.xls)ファイルを参照）^[訳注：全体の2乗和は<span class="jamovi">jamovi</span>でも計算できますし，そちらの方が簡単だと思います（[<span class="filename">clinicaltrialfactorialanova.omv</span>](data/clinicaltrialfactorialanova.omv)ファイルを参照）。]。1つ前の式を使って全体の2乗和を求め（そうすると全体の2乗和は4.85になります）そして先ほどの式で残差2乗和を求めると0.92となりました。ここでもまた，答えは<span class="jamovi">jamovi</span>の結果と同じです。
 
 ### 多元配置分散分析の自由度
 
@@ -524,9 +524,9 @@ kable(dtf, align = c('c','c','c','c','c')) %>%
   kable_styling(bootstrap_options = "striped", full_width = F)
 ```
 
-もちろん，これは何も特別なことではありません。実際のデータもこの形になっていることが期待されるのですから。<span class="filename">rtfm.csv</span>データファイルを見てみましょう。<span class="jamovi">jamovi</span>の「**Exploration**（探索）」メニューの「**Descriptives**（記述統計）」 で，データが釣り合い型のデザインになっていることを確認してください。データには出席（<span class="rtext">attend</span>）と教科書（<span class="rtext">reading</span>）のそれぞれの組み合わせごとに2つの観測値が含まれています。同様に，各組み合わせごとに成績の平均点を計算することもできます。その結果が図\@ref(fig:rtfmdescriptives)です。平均値を見ると，教科書を読むことと授業に出席することはどちらもかなり重要であるという印象を受けます。
+もちろん，これは何も特別なことではありません。実際のデータもこの形になっていることが期待されるのですから。[<span class="filename">rtfm.csv</span>](data/rtfm.csv)データファイルを見てみましょう。<span class="jamovi">jamovi</span>の「**Exploration**（探索）」メニューの「**Descriptives**（記述統計）」 で，データが釣り合い型のデザインになっていることを確認してください。データには出席（<span class="rtext">attend</span>）と教科書（<span class="rtext">reading</span>）のそれぞれの組み合わせごとに2つの観測値が含まれています。同様に，各組み合わせごとに成績の平均点を計算することもできます。その結果が図\@ref(fig:rtfmdescriptives)です。平均値を見ると，教科書を読むことと授業に出席することはどちらもかなり重要であるという印象を受けます。
 
-```{r rtfmdescriptives, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">rtfm.csv</span>データの記述統計', echo=FALSE}
+```{r rtfmdescriptives, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='[<span class="filename">rtfm.csv</span>](data/rtfm.csv)データの記述統計', echo=FALSE}
 knitr::include_graphics("img/factorialanova/rtfmdescriptives.png")
 ```
 
@@ -620,7 +620,7 @@ knitr::include_graphics("img/factorialanova/factorialanova8.png")
 
 ### 3水準以上の要因の対比
 
-ここまで，\(2\times 2\)の分散分析を線形モデルとして捉える方法について見てきました。これを\(2 \times 2 \times 2\)の分散分析や\(2 \times 2 \times 2 \times 2\)の分散分析に一般化することはとても簡単です。実際，手順はまったく同じで，単に新たな2値変数をそれぞれの要因に追加してやるだけです。ところが，水準数が2を超える要因がある場合には話がややこしくなりはじめます。本章の最初に扱った<span class="filename">clinicaltrial.csv</span>データでの\(3 \times 2\)の分散分析の場合を考えてみましょう。 水準が3つある<span class="rtext">drug</span>（投薬条件）要因を回帰分析に使えるような数値型に変換するにはどうすれば良いのでしょうか。
+ここまで，\(2\times 2\)の分散分析を線形モデルとして捉える方法について見てきました。これを\(2 \times 2 \times 2\)の分散分析や\(2 \times 2 \times 2 \times 2\)の分散分析に一般化することはとても簡単です。実際，手順はまったく同じで，単に新たな2値変数をそれぞれの要因に追加してやるだけです。ところが，水準数が2を超える要因がある場合には話がややこしくなりはじめます。本章の最初に扱った[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)データでの\(3 \times 2\)の分散分析の場合を考えてみましょう。 水準が3つある<span class="rtext">drug</span>（投薬条件）要因を回帰分析に使えるような数値型に変換するにはどうすれば良いのでしょうか。
 
 これは実際にはそれほど難しいことではありません。3水準の要因が*2つ*の2値変数として書き直し可能であるということさえわかればよいのです。たとえば，<span class="rtext">druganxifree</span>という新しい2値変数を作ったとしましょう。<span class="rtext">drug</span>（投薬条件）変数が<span class="rtext">anxifree</span>（アンシフリー）の場合，この変数の値は必ず<span class="rtext">druganxifree=1</span>とします。それ以外の場合には<span class="rtext">druganxifree=0</span>とします。この変数は，アンシフリーとそれ以外の2つの投薬条件の<span class="keyterm">対比</span>（contrast）を行うものです。もちろん，<span class="rtext">druganxifree</span>という対比だけでは，<span class="rtext">drug</span>変数に含まれるすべての情報を完全には捉えきれていません。ここではもう1つの対比が必要です。それはジョイゼパムとプラシボを区別できるようにするための対比です。このために，<span class="rtext">drugjoyzepam</span>という名の2番目の2値変数を作成します。これは投薬条件がジョイゼパムの場合に1になり，それ以外は0になります。この2つの対比を組み合わせると，3つの投薬条件すべてを完全に区別することができます。これを表で示すと次のようになります。
 
@@ -641,13 +641,13 @@ kable(dtf, align = c('c','c','c','c','c')) %>%
 
 患者に投与された薬がプラシボの場合，2つの対比変数は両方とも0になります。もし薬がアンシフリーなら，<span class="rtext">druganxifree</span>変数は1で<span class="rtext">drugjoyzepam</span>変数は0です。ジョイゼパムの場合はこの反対で，<span class="rtext">drugjoyzepam</span>が1に，<span class="rtext">druganxifree</span>は0になります。
 
-対比変数は，<span class="jamovi">jamovi</span>では新しい計算変数として簡単に作成できます。たとえば，<span class="rtext">druganxifree</span>変数を作るには，新しい計算変数を作って数式ボックスに<span class="rtext">IF(drug == 'anxifree', 1, 0)'</span>という式を入れます。同様に，新たに<span class="rtext">drugjoyzepam</span>という変数を作ったら，数式ボックスに<span class="rtext">IF(drug == 'joyzepam', 1, 0)'</span>と入力します。同じように，心理療法の変数についても<span class="rtext">CBTtherapy</span>という計算変数を作成して<span class="rtext">IF(therapy == 'CBT', 1, 0)</span>という式を入れてやれば，対比変数ができます。これらの新しい変数とその式は，<span class="filename">clinicaltrial2.omv</span>ファイルで確認できます。
+対比変数は，<span class="jamovi">jamovi</span>では新しい計算変数として簡単に作成できます。たとえば，<span class="rtext">druganxifree</span>変数を作るには，新しい計算変数を作って数式ボックスに<span class="rtext">IF(drug == 'anxifree', 1, 0)'</span>という式を入れます。同様に，新たに<span class="rtext">drugjoyzepam</span>という変数を作ったら，数式ボックスに<span class="rtext">IF(drug == 'joyzepam', 1, 0)'</span>と入力します。同じように，心理療法の変数についても<span class="rtext">CBTtherapy</span>という計算変数を作成して<span class="rtext">IF(therapy == 'CBT', 1, 0)</span>という式を入れてやれば，対比変数ができます。これらの新しい変数とその式は，[<span class="filename">clinicaltrial2.omv</span>](data/clinicaltrial2.omv)ファイルで確認できます。
 
 これで3水準の要因を2つの2値変数で定義することができました。それに，2水準の要因を持つ分散分析と回帰分析が同じ振る舞いをすることはすでに見てきました。ただ，この場合は先ほどより少し複雑になっています。その点について次のセクションで見ていくことにします。
 
 ### 3水準以上の要因が含まれる分散分析と回帰分析
 
-私たちの手元には，2種類の方法で表現された同じデータがあります。元の<span class="filename">clinicaltrial.csv</span>データでは<span class="rtext">drug</span>（投薬条件）変数は3水準の1つの変数でしたが，拡張した<span class="filename">clinicaltrial2.omv</span>データでは，これが2つの対比変数で表現されています。ここで確かめたいのは，元の\(3 \times 2\)の分散分析が対比変数を使用した回帰分析と同じだということです。再び（主効果のみで）分散分析を実行してみましょう。そうすると結果は図\@ref(fig:factorialanova9)のようになります。
+私たちの手元には，2種類の方法で表現された同じデータがあります。元の[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)データでは<span class="rtext">drug</span>（投薬条件）変数は3水準の1つの変数でしたが，拡張した[<span class="filename">clinicaltrial2.omv</span>](data/clinicaltrial2.omv)データでは，これが2つの対比変数で表現されています。ここで確かめたいのは，元の\(3 \times 2\)の分散分析が対比変数を使用した回帰分析と同じだということです。再び（主効果のみで）分散分析を実行してみましょう。そうすると結果は図\@ref(fig:factorialanova9)のようになります。
 
 ```{r factorialanova9, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>での主効果のみの分散分析結果', echo=FALSE}
 knitr::include_graphics("img/factorialanova/factorialanova9.png")
@@ -815,7 +815,7 @@ kable(dtf, align = c('c','c','c','c','c')) %>%
 
 さて，少し話を変えましょう。今度は対比を使用した計画的な比較ではなく，分散分析で有意な効果が見られた場合について考えてみます。\(F\)検定というのは「全体」についての検定なので，帰無仮説ではグループ間に差がないということだけが仮定されています。そのため，結果が有意だったとしてもどのグループの間に差があるのかまではわかりません。これについては第\@ref(ch:anova)章でも論じました。そして，そこでは考えられる組み合わせすべてに対して\(t\)検定を行い，（ボンフェロニ補正やホルム補正などで）多重比較補正をして全体での第1種の誤り率をコントロールする方法について説明しています。第\@ref(ch:anova)章で使用した方法は比較的単純なもので，複数の仮説を検定するさまざまな場面で応用できるという利点があるのですが，分散分析で事後分析を行う場合においては，それらの方法がベストというわけでもないのです。統計学の文献にはじつにさまざまな多重比較の方法があげられています[@Hsu1996]。ただ，それらすべてを詳しく説明することは本書のような入門書の範囲を超えています。
 
-ただ，その中で皆さんに知っておいてほしいツールが1つあります。それは<span class="keyterm">テューキーのHSD</span>と呼ばれるものです（テューキーのHSDの「HSD」は「本当に有意な差（Honestly Significant Difference）」の略です）。今回は，式の説明は省いて考え方の説明だけにしておこうと思います。テューキーのHSDの基本的な考え方は，関連するすべてのペアで比較をするというものです。つまり，テューキーのHSDはペアごとの比較が実際の関心対象である場合に適切な方法といえます^[たとえば，グループB，Cの平均値とグループAの間に有意な差があるのではないかということに関心がある場合には，別のツールを使用する必要があります（たとえばシェフェ（Scheffe）法がそうですが，これはより慎重な方法で，そして本書の範囲を超えています）。しかし，多くの場面ではグループ間でのペアごとの比較に興味があることでしょう。だからテューキーのHSDについて知っておくことはとても役立ちます。]。たとえば，私たちは<span class="filename">clinicaltrial.csv</span>データで多元配置分散分析を行いました。そして投薬条件と心理療法の主効果があったので，次の4つを比較することに関心があるはずです。
+ただ，その中で皆さんに知っておいてほしいツールが1つあります。それは<span class="keyterm">テューキーのHSD</span>と呼ばれるものです（テューキーのHSDの「HSD」は「本当に有意な差（Honestly Significant Difference）」の略です）。今回は，式の説明は省いて考え方の説明だけにしておこうと思います。テューキーのHSDの基本的な考え方は，関連するすべてのペアで比較をするというものです。つまり，テューキーのHSDはペアごとの比較が実際の関心対象である場合に適切な方法といえます^[たとえば，グループB，Cの平均値とグループAの間に有意な差があるのではないかということに関心がある場合には，別のツールを使用する必要があります（たとえばシェフェ（Scheffe）法がそうですが，これはより慎重な方法で，そして本書の範囲を超えています）。しかし，多くの場面ではグループ間でのペアごとの比較に興味があることでしょう。だからテューキーのHSDについて知っておくことはとても役立ちます。]。たとえば，私たちは[<span class="filename">clinicaltrial.csv</span>](data/clinicaltrial.csv)データで多元配置分散分析を行いました。そして投薬条件と心理療法の主効果があったので，次の4つを比較することに関心があるはずです。
 
 -   アンシフリーとプラシボでの気分改善効果の差
 
@@ -865,9 +865,9 @@ knitr::include_graphics("img/factorialanova/factorialanova14.png")
 
 ### コーヒーデータ
 
-まずは，何らかの例題データがあった方がよいでしょう。そこで，<span class="filename">coffee.csv</span>ファイルに\(3 \times 2\)の不釣り合い型分散分析用の架空データを用意しておきました。ここでは，人々の無駄話（<span class="rtext">babble</span>）の程度に注目します。人々がコーヒーを飲み過ぎた場合に，コーヒーそのものの影響で無駄話が増えるのか，それともコーヒーに追加したミルク（<span class="rtext">milk</span>）や砂糖（<span class="rtext">sugar</span>）の影響で無駄話が増えるのかを知りたいというのが目的です。そして18人の参加者にコーヒーを飲んでもらったとしましょう。コーヒーとカフェインの量は一定とし，ミルクを加えるかどうかが実験条件になります。ですから，ミルク（<span class="rtext">milk</span>）の要因は「あり」（<span class="rtext">yes</span>）と「なし」（<span class="rtext">no</span>）の2水準です。また，砂糖については複数の条件を使用しました。コーヒーに追加する砂糖は，本物の砂糖（<span class="rtext">"real"</span>），人工甘味料（<span class="rtext">"fake"</span>），砂糖なし（<span class="rtext">"none"</span>）のいずれかなので，砂糖（<span class="rtext">sugar</span>）要因は3水準です。ここでの結果変数は連続変数で，これは何らかの心理学的な測度を用いて人が「無駄話をしている」程度を測定しています。その詳細部分についてはここでは重要ではありません。このデータを<span class="jamovi">jamovi</span>のスプレッドシートビューで見ると，図\@ref(fig:factorialanova15)のようになります。
+まずは，何らかの例題データがあった方がよいでしょう。そこで，[<span class="filename">coffee.csv</span>](data/coffee.csv)ファイルに\(3 \times 2\)の不釣り合い型分散分析用の架空データを用意しておきました。ここでは，人々の無駄話（<span class="rtext">babble</span>）の程度に注目します。人々がコーヒーを飲み過ぎた場合に，コーヒーそのものの影響で無駄話が増えるのか，それともコーヒーに追加したミルク（<span class="rtext">milk</span>）や砂糖（<span class="rtext">sugar</span>）の影響で無駄話が増えるのかを知りたいというのが目的です。そして18人の参加者にコーヒーを飲んでもらったとしましょう。コーヒーとカフェインの量は一定とし，ミルクを加えるかどうかが実験条件になります。ですから，ミルク（<span class="rtext">milk</span>）の要因は「あり」（<span class="rtext">yes</span>）と「なし」（<span class="rtext">no</span>）の2水準です。また，砂糖については複数の条件を使用しました。コーヒーに追加する砂糖は，本物の砂糖（<span class="rtext">"real"</span>），人工甘味料（<span class="rtext">"fake"</span>），砂糖なし（<span class="rtext">"none"</span>）のいずれかなので，砂糖（<span class="rtext">sugar</span>）要因は3水準です。ここでの結果変数は連続変数で，これは何らかの心理学的な測度を用いて人が「無駄話をしている」程度を測定しています。その詳細部分についてはここでは重要ではありません。このデータを<span class="jamovi">jamovi</span>のスプレッドシートビューで見ると，図\@ref(fig:factorialanova15)のようになります。
 
-```{r factorialanova15, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="filename">coffee.csv</span>データの記述統計。ここではグループごとに算出してある。', echo=FALSE}
+```{r factorialanova15, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='[<span class="filename">coffee.csv</span>](data/coffee.csv)データの記述統計。ここではグループごとに算出してある。', echo=FALSE}
 knitr::include_graphics("img/factorialanova/factorialanova15.png")
 ```
 
