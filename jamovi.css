@@ -93,3 +93,64 @@ dd {
 	text-align: center;
 	padding-bottom: 1ex;
 }
+
+.discourseL {
+	display: block;    
+	position: relative;
+    margin-bottom: 1em;
+    margin-left: 80px;
+    margin-right: 80px;
+    border: solid #eee;
+    padding: .5em;
+    border-radius: 10px;
+	color: #555555 !important;	
+}
+
+.discourseL::before{
+	padding-top: 30px;
+	position: absolute;
+    border: 10px solid transparent;
+    border-left: 10px solid transparent;
+    content: 'あなた';
+	font-size: 0.8em;
+    left: -100px;
+    width:80px;
+    height:140px;
+    background-image: url("img/emoji/you.png");
+	background-size: 50px;
+	background-repeat: no-repeat;
+	background-position: center -15px;
+	font-weight: bold !important;
+	text-align: center;
+}
+
+.discourseR {
+	display: block;    
+	position: relative;
+    margin-bottom: 1em;
+    margin-left: 80px;
+    margin-right: 80px;
+    border: solid #eee;
+    padding: .5em;
+    border-radius: 10px;
+	color: #555555 !important;
+	background-color: #fffff5;
+}
+
+.discourseR::before{
+	padding-top: 30px;
+	position: absolute;
+    border: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: '私';
+	font-size: 0.8em;
+    right: -100px;
+    width:80px;
+    height:140px;
+    background-image: url("img/emoji/dan.png");
+	background-size: 50px;
+	background-repeat: no-repeat;
+	background-position: center -15px;
+	font-weight: bold !important;
+	text-align: center;
+}

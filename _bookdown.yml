@@ -1,4 +1,5 @@
 book_filename: "jamovi"
+repo: https://github.com/sbtseiji/lsj
 delete_merged_file: true
 language:
   label:
