@@ -265,7 +265,7 @@ knitr::include_graphics("img/mechanics/likertraw.png")
 データをこのような形に変換しておくと便利なのは，意見の*向き*と意見の*強さ*を別々に分析したいという場面もよくあるからです。その場合，向きと強さを分けるために，<span class="rtext">likert.centred</span>変数に大して2種類の変換を行います。まず，<span class="rtext">opinion.strength</span>変数には中心化された値の絶対値を入力します（「ABS」関数を使用します）^[数値の絶対値というのは，その数値が正か負かに関わらず，ゼロからの距離を意味するものと考えることができます。] 。「**Compute**（計算）」ボタンを使用して新しい変数を<span class="jamovi">jamovi</span>に追加してください。この変数に<span class="rtext">opinion.strength</span>と名前をつけ，今度は数式ボックスの横にある**f~x~**ボタンをクリックします。これをクリックすると，さまざまな「**Functions**（関数）」とその関数で使用できる「**Variables**（変数）」が表示されるので，「ABS」をダブルクリックして，その後に 「likert.centred」をダブルクリックします。すると，「Formula（関数）」ボックスの中身は「<span class="rtext">ABS(likert.centred)</span>となり，図\@ref(fig:opinionstrength)にあるようにスプレッドシートの新しい変数にその値が入力されます。
 
 
-```{r opinionstrength, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='*f~x~*ボタンと関数の使用。', echo=FALSE}
+```{r opinionstrength, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='**f~x~**ボタンと関数の使用。', echo=FALSE}
 knitr::include_graphics("img/mechanics/opinionstrength.png")
 ```
 

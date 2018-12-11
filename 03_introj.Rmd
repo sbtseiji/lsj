@@ -91,7 +91,7 @@ MEAN(A, B)
 
 上から順に，「AとBの合計」，「変数<span class="rtext">len</span>の値を10を底とする対数に変換」，「AとBの平均値」，「変数<span class="rtext">dose</span>の値を\(z\)得点に変換」です。下の図\@ref(fig:computedvariable)は，<span class="rtext">dose</span>（サンプルデータセットの「Tooth Growth」に含まれる変数）を\(z\)得点に変換した結果を計算変数として追加した場合の<span class="jamovi">jamovi</span>の画面です。
 
-```{r computedvariable, warning=FALSE, echo=FALSE, out.width='70.6%', fig.align='center', fig.cap='「dose」のz得点を計算変数として新規に追加。', echo=FALSE}
+```{r computedvariable, warning=FALSE, echo=FALSE, out.width='70.6%', fig.align='center', fig.cap='「dose」の\\(z\\)得点を計算変数として新規に追加。', echo=FALSE}
 knitr::include_graphics("img/introj/computedvariable.png",auto_pdf = TRUE)
 ```
 

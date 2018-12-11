@@ -47,7 +47,7 @@ knitr::include_graphics("img/graphics/boxplot1.png")
 
 ### バイオリン図  {#sec:violinplots}
 
-```{r boxplot2, warning=FALSE, echo=FALSE, out.width='47.1%', fig.align='center', fig.cap='jamoviによる<span class="rtext">afl.margins</span>変数のバイオリン図。箱ひげ図とデータ点を重ねて表示している。', echo=FALSE}
+```{r boxplot2, warning=FALSE, echo=FALSE, out.width='47.1%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>による<span class="rtext">afl.margins</span>変数のバイオリン図。箱ひげ図とデータ点を重ねて表示している。', echo=FALSE}
 knitr::include_graphics("img/graphics/boxplot2.png")
 ```
 
