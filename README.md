@@ -1,4 +1,4 @@
-# jamoviで学ぶ心理統計」
+# jamoviで学ぶ心理統計
 
 bookdownソースファイル。
 
