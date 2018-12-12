@@ -351,7 +351,7 @@ knitr::include_graphics("img/descriptives/kurtosis.png")
 library(knitr)
 library(kableExtra)
 
-dt<- matrix(c('平た過ぎ', '緩尖的', 'マイナス',   
+dt<- matrix(c('平たすぎ', '緩尖的', 'マイナス',   
 '適度なとんがり', '中尖的', '0',
 'とんがりすぎ', '  急尖的', 'プラス'), ncol=3, byrow=T)
 
