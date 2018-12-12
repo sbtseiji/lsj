@@ -110,6 +110,14 @@ $$
 &=& \sum_{k=1}^G N_k \left( \overline{Y}_k - \overline{Y} \right)^2\end{aligned}  
 $$
 
+```{r anovavar, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=2, fig.cap='グループ間のばらつき（図の(a)）とグループ内のばらつき（図のb）。図(a)の矢印はグループ平均値の違いを示しており，図(b)の矢印は各グループ内でのばらつきを強調している。'}
+
+require(ggplot2); require(ggplotify); require(cowplot)
+p1<-ggdraw()+draw_image("img/anova/anovaBetween.png")
+p2<-ggdraw()+draw_image("img/anova/anovaBetween.png")
+plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=1,label_size=12)
+```
+
 実験参加者全体のばらつき（\(\mbox{SS}_{tot}\)）が，グループ間のばらつき（\(\mbox{SS}_b\)）とグループ内のばらつき（\(\mbox{SS}_w\)）の合計であることを式で示すのはそれほど難しくありません。つまり次のようになります。
 
 $$  
@@ -117,17 +125,6 @@ $$
 $$
 
 簡単ですね。
-
-```{r anovavar, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='グループ間のばらつき（図の(a)）とグループ内のばらつき（図のb）。図(a)の矢印はグループ平均値の違いを示しており，図(b)の矢印は各グループ内でのばらつきを強調している。'}
-
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
-
-p1<-as.grob(image_read("img/anova/anovaBetween.png"))
-p2<-as.grob(image_read("img/anova/anovaWithin.png"))
-
-plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
-
-```
 
 さて，これで何がわかったのでしょうか。これでわかったのは，結果変数の全体的なばらつき（\(\mbox{SS}_{tot}\)）が数学的には「グループごとの平均値の違いによるばらつき」（\(\mbox{SS}_{b}\)）と「それ以外のばらつき」（\(\mbox{SS}_{w}\)）の合計として表せるということです。では，これは各グループが異なる母集団平均値を持つかどうか知るうえでどのように役立つのでしょうか。えっと…あれ？ ちょっと待ってください。これ*こそ*が私たちの探しているものじゃないでしょうか。帰無仮説が真の場合，すべてのグループの平均値はお互いにほぼ同じ値になるはずですよね。ということはつまり，それは\(\mbox{SS}_{b}\)がごく小さいか，あるいは少なくともそれが「何か別のものに関連したばらつき」（\(\mbox{SS}_{w}\)）よりも小さくなるということではないでしょうか。うん。どうやら仮説検定の方法が見つかったようです。
 
@@ -593,7 +590,7 @@ knitr::include_graphics("img/anova/anova4.png")
 
 正規性の仮定についての確認方法は比較的単純です。必要なことのほとんどはセクション\@ref(sec:shapiro)で説明しました。私たちがすべきことはQ-Qプロットを作成することだけです。また，可能であれば追加でシャピロ・ウィルク検定を行えばよいのです。図\@ref(fig:anova5)にQ-Qプロットを示しましたが，私には十分正規分布しているように見えます。
 
-```{r anova5, warning=FALSE, echo=FALSE, out.width='60.6%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>の分散分析でオプションとして作成されるQ-Qプロット。', echo=FALSE}
+```{r anova5, warning=FALSE, echo=FALSE, out.width='50.6%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>の分散分析でオプションとして作成されるQ-Qプロット。', echo=FALSE}
 knitr::include_graphics("img/anova/anova5.png")
 ```
 
