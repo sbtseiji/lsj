@@ -267,7 +267,7 @@ knitr::include_graphics("img/factorialanova/interaction_mean.png")
 ```
 
 ```{r interanctionplot, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='臨床試験データの交互作用プロット', echo=FALSE}
-knitr::include_graphics("img/factorialanova/interaction.png")
+knitr::include_graphics("img/factorialanova/interaction_plot.png")
 ```
 
 ### 交互作用とは何か
@@ -934,8 +934,8 @@ knitr::include_graphics("img/factorialanova/factorialanova17.png")
 
 $$
 \begin{array}{ll}
-帰無仮説モデル: & 無駄話 \sim 切片 + ミルク+ 砂糖 {\times} ミルク\\
-対立仮説モデル:& 無駄話 \sim 切片+ 砂糖 + ミルク+ 砂糖 {\times} ミルク
+帰無仮説モデル: & 無駄話 = 切片 + ミルク+ 砂糖 {\times} ミルク\\
+対立仮説モデル:& 無駄話 = 切片+ 砂糖 + ミルク+ 砂糖 {\times} ミルク
 \end{array}
 $$
 
