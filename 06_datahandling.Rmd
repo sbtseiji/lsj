@@ -387,7 +387,7 @@ speaker == 'makka-pakka'
 knitr::include_graphics("img/mechanics/subset1.png")
 ```
 
-この列では，<span class="rtext">speaker</span>（話し手）が「makka-pakka」<u>でない</u>行はグレーになっていて，<span class="rtext">speaker</span>（話し手）が「makka-pakka」<u>である</u>行には緑のチェックマークが示され，選択された状態になっています。これをテストするには，<span class="rtext">speaker</span>（話し手）変数に対して「**Exploration**（探索）」>「**Descriptives**（記述統計）」>「**Frequency tables**（度数分布表）」を実行し，どのような結果になるかを見てみてください。さあ，やってみましょう。
+この列では，<span class="rtext">speaker</span>（話し手）が「makka-pakka」*でない*行はグレーになっていて，<span class="rtext">speaker</span>（話し手）が「makka-pakka」*である*行には緑のチェックマークが示され，選択された状態になっています。これをテストするには，<span class="rtext">speaker</span>（話し手）変数に対して「**Exploration**（探索）」>「**Descriptives**（記述統計）」>「**Frequency tables**（度数分布表）」を実行し，どのような結果になるかを見てみてください。さあ，やってみましょう。
 
 このようなシンプルな例だけでなく，論理式を使ってもっと複雑なフィルタを作成することもできます。たとえば，発話が「pip」または「oo」の行だけを抽出したいとします。その場合，「Filter 1」の入力欄に次のように入力します。
 
