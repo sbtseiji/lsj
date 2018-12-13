@@ -1,7 +1,8 @@
 --- 
 title: "<span class='jamovi'>jamovi</span>で学ぶ心理統計"
 author: "Danielle J Navarro & Dvid R Foxcroft（著）　芝田征司（訳）"
-date: "`r Sys.Date()`"
+github-repo: "sbtseiji/lsj"
+cover-image: "img/cover.png"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [refs.bib]
