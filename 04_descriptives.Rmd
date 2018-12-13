@@ -114,12 +114,12 @@ $$
 -   間隔尺度や比率尺度の場合には，平均値と中央値のどちらも使用することができます。どちらを選択すべきかというのは，何を見たいかによって異なります。平均値はデータに含まれるすべての情報を使用するという利点があります（これはデータがそれほどたくさんではない場合に役立ちます）。ただし，極端な値（外れ値）よる影響を受けやすいという特徴があります。
 
 
-```{r meanmedian, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=4, fig.cap='平均値と中央値の違い。平均値は基本的にデータセットの「重心」。ヒストグラムでそれぞれのデータをブロックとして表したとき，シーソーのようにバランスが取れる地点が平均値になる(a)。これに対し，中央値は中央にあるブロックのことであり，そのブロックよりも大きな観測値と小さな観測値のブロックは数が同じになる(b)。'}
+```{r meanmedian, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=3.5, fig.cap='平均値と中央値の違い。平均値は基本的にデータセットの「重心」。ヒストグラムでそれぞれのデータをブロックとして表したとき，シーソーのようにバランスが取れる地点が平均値になる(a)。これに対し，中央値は中央にあるブロックのことであり，そのブロックよりも大きな観測値と小さな観測値のブロックは数が同じになる(b)。'}
 
 require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-ggdraw()+draw_image("img/descriptives2/mean.png")
-p2<-ggdraw()+draw_image("img/descriptives2/median.png")
+p1<-ggdraw()+draw_image("img/descriptives2/mean.png",y=-.05)
+p2<-ggdraw()+draw_image("img/descriptives2/median.png",y=-.05)
 
 plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,label_size=12)
 
