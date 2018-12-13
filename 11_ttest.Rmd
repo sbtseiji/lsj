@@ -129,14 +129,13 @@ kable(dtf, align = c('c','c','c')) %>%
 
 そして研究者たちは，\(z\)統計量を手計算し，教科書にあるこうした臨界値を見て判断していたのです。
 
-```{r ztest, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='両側z検定(a)と片側z検定(b)の棄却域'}
+```{r ztest, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=3, fig.cap='両側z検定(a)と片側z検定(b)の棄却域'}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
+p1<-ggdraw()+draw_image("img/ttest/zTestTwoTailed.png")
+p2<-ggdraw()+draw_image("img/ttest/zTestOneTailed.png")
 
-p1<-as.grob(image_read("img/ttest/zTestTwoTailed.png"))
-p2<-as.grob(image_read("img/ttest/zTestOneTailed.png"))
-
-plot_grid(p1,p2,labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2,labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 
 ```
 
@@ -263,12 +262,12 @@ kable(dtf, align = c('c','c','c')) %>%
 
 データについてもっと詳しく知るために，今度はヒストグラムを作成してみました（これには<span class="jamovi">jamovi</span>ではなく<span class="R">R</span>を使用しています）。図\@ref(fig:harpohist)は個人指導員別の成績分布を示したものです。同じく，両グループの学生の平均値および信頼区間を示した簡単な図も作成しました（図\@ref(fig:ttestci)）。
 
-```{r harpohist, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='アナスタシアの指導学生（図の(a)）とバーナデットの指導学生（図の(b)）の成績分布のヒストグラム。これらのグラフからは，アナスタシアの指導学生の方が平均して若干優れた成績を収めているように見える。', echo=FALSE}
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+```{r harpohist, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=3, fig.cap='アナスタシアの指導学生(a)とバーナデットの指導学生(b)の成績分布のヒストグラム。これらのグラフからは，アナスタシアの指導学生の方が平均して若干優れた成績を収めているように見える。', echo=FALSE}
+require(ggplot2); require(ggplotify); require(cowplot)
+p1<-ggdraw()+draw_image("img/ttest/HarpoAnastasia.png")
+p2<-ggdraw()+draw_image("img/ttest/HarpoBernadette.png")
 
-p1<-as.grob(image_read("img/ttest/HarpoAnastasia.png"))
-p2<-as.grob(image_read("img/ttest/HarpoBernadette.png"))
-plot_grid(p1,p2,labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2,labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 ```
 
 
@@ -488,14 +487,14 @@ knitr::include_graphics("img/ttest/ttest_paired1.png")
 図\@ref(fig:ttestpaired1)の記述統計をざっと見た限りでは，その印象は正しそうです。20人の学生全体で，1回目のテストの平均点は57点，そして2回目のテストでは58点に上昇しています。ただ，標準偏差はそれぞれ6.6と6.4ですので，成績が向上したように見えるのは単なる幻想かもしれないとも思えてきました。もしかしたら単なる確率的な変動かもしれません。この印象は，図\@ref(fig:pairedt)の(a)に示した平均値と信頼区間でさらに強まります。信頼区間がかなり広いので，この図だけで判断したとすると，学生たちの成績が向上しているように見えるのはたまたまだと言いたくなることでしょう。
 
 
-```{r pairedt, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='テスト1とテスト2の成績の平均値と95％信頼区間（図(a)），テスト1とテスト2の成績の散布図（図(b)），およびチコ教授のクラスにおける各学生の成績向上度を示すヒストグラム（図(c)）。図(c)では，分布のほとんどがゼロを上回っていることに注意。つまり，大多数の学生が1回目のテストから2回目のテストにかけて成績が向上している。', echo=FALSE}
+```{r pairedt, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center',fig.height=2.5, fig.cap='テスト1とテスト2の成績の平均値と95％信頼区間(a)，テスト1とテスト2の成績の散布図(b)，およびチコ教授のクラスにおける各学生の成績向上度を示すヒストグラム(c)。図の(c)では，分布のほとんどがゼロを上回っていることに注意。つまり，大多数の学生が1回目のテストから2回目のテストにかけて成績が向上している。', echo=FALSE}
  
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/ttest/pairedMeans.png"))
-p2<-as.grob(image_read("img/ttest/pairedScatterplot.png"))
-p3<-as.grob(image_read("img/ttest/pairedHist.png"))
-plot_grid(p1,p2,p3,labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.9,label_size=12)
+p1<-ggdraw()+draw_image("img/ttest/pairedMeans.png",y=-.075)
+p2<-ggdraw()+draw_image("img/ttest/pairedScatterplot.png",y=-.075)
+p3<-ggdraw()+draw_image("img/ttest/pairedHist.png",y=-.075)
+plot_grid(p1,p2,p3,labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.95,label_size=12)
 ```
 
 
@@ -674,24 +673,25 @@ $$
 標本が正規性の仮定を満たしているといえるかどうかをチェックする1つの方法は，<span class="keyterm">Q-Qプロット</span> (quantile-quantile plot）を作成してみることです。これにより，体系的なずれがあるかどうかを視覚的にチェックすることができます。Q-Qプロットでは，それぞれの観測値が1つの点で示されます。グラフの横軸はデータが正規分布（平均値と分散は標本から推定）である場合に観測値がとるはずの理論的な分位数で，縦軸は標本データにおける実際の分位数です。データが正規分布していれば，これらの点は直線上にまっすぐ並びます。例として，正規分布から標本抽出したデータでQ-Qプロットを作成してみましょう。その結果が図\@ref(fig:qq1)です。見ての通り，これらのデータはかなりまっすぐに並んでいます。正規分布から標本抽出したデータなのですから当然ですね。では，図\@ref(fig:qq2)の2つのデータセットを見てみましょう。上の図は，かなり歪んだ分布のヒストグラムとQ-Qプロットを示しています。この図ではQ-Qプロットは上向きのカーブになっています。下の図では，裾の重い（つまり尖度が高い）データで同様の図を作成したものです。この場合，Q-Qプロットは真ん中がフラットで，両端が急カーブになっています。
 
 
-```{r qq1, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='ヒストグラム（図(a)）と正規Q-Qプロット（図(b)）。<span class="rtext">normal.data</span>データは100個の観測値を持つ正規分布の標本。このデータについてのシャピロ・ウィルク統計量は\\(W = .99\\)であり，正規分布からの有意な逸脱は検出されなかった（\\(p = .73\\)）。', echo=FALSE}
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+```{r qq1, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=3, fig.cap='ヒストグラム(a)と正規Q-Qプロット(b)。<span class="rtext">normal.data</span>データは100個の観測値を持つ正規分布の標本。このデータについてのシャピロ・ウィルク統計量は\\(W = .99\\)であり，正規分布からの有意な逸脱は検出されなかった（\\(p = .73\\)）。', echo=FALSE}
 
-p1<-as.grob(image_read("img/ttest/qqNormalHist.png"))
-p2<-as.grob(image_read("img/ttest/qqNormalPlot.png"))
+require(ggplot2); require(ggplotify); require(cowplot)
 
-plot_grid(p1,p2,labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+p1<-ggdraw()+draw_image("img/ttest/qqNormalHist.png")
+p2<-ggdraw()+draw_image("img/ttest/qqNormalPlot.png")
+
+plot_grid(p1,p2,labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 
 ```
 
 
-```{r qq2, warning=FALSE, echo=FALSE,  message=FALSE, out.width='82.4%', fig.align='center', fig.cap='上の段は<span class="rtext">skewed.data</span>の100個の観測値のヒストグラム（図(a)）と正規Q-Qプロット（図(b)）。このデータの歪度は1.94であり，それがQ-Qプロットでは上向きのカーブという形で反映されている。シャピロ・ウィルク統計量は\\(W = .80\\)であり，正規分布から有意に逸脱している（\\(p <.001\\)）。下の段は裾が重い分布について同様に図示したもので，こちらも100個の観測値からなる。この場合，データの裾の重さは高い尖度（2.80）となり，Q-Qプロットは中央部では平坦に，両側では急カーブになる。シャピロ・ウィルク統計量は\\(W = .93\\)であり，やはりこちらも正規分布からの逸脱が有意である（p <.001）。', echo=FALSE}
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+```{r qq2, warning=FALSE, echo=FALSE,  message=FALSE, out.width='82.4%', fig.align='center', fig.height=6, fig.cap='上の段は<span class="rtext">skewed.data</span>の100個の観測値のヒストグラム(a)と正規Q-Qプロット(b)。このデータの歪度は1.94であり，それがQ-Qプロットでは上向きのカーブという形で反映されている。シャピロ・ウィルク統計量は\\(W = .80\\)であり，正規分布から有意に逸脱している（\\(p <.001\\)）。下の段は裾が重い分布について同様に図示したもので，こちらも100個の観測値からなる。この場合，データの裾の重さは高い尖度（2.80）となり，Q-Qプロットは中央部では平坦に，両側では急カーブになる。シャピロ・ウィルク統計量は\\(W = .93\\)であり，やはりこちらも正規分布からの逸脱が有意である（p <.001）。', echo=FALSE}
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/ttest/qqSkewedHist.png"))
-p2<-as.grob(image_read("img/ttest/qqSkewedPlot.png"))
-p3<-as.grob(image_read("img/ttest/qqHeavyTailedHist.png"))
-p4<-as.grob(image_read("img/ttest/qqHeavyTailedPlot.png"))
+p1<-ggdraw()+draw_image("img/ttest/qqSkewedHist.png")
+p2<-ggdraw()+draw_image("img/ttest/qqSkewedPlot.png")
+p3<-ggdraw()+draw_image("img/ttest/qqHeavyTailedHist.png")
+p4<-ggdraw()+draw_image("img/ttest/qqHeavyTailedPlot.png")
 
 plot_grid(p1,p2,p3,p4,labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.9,label_size=12)
 ```
@@ -710,7 +710,7 @@ $$
 
 \(W\)統計量の背後にある数学を説明するのはちょっとばかり手間ですので，ここではこれがどんな振る舞いをするのかという大まかな説明だけにしておきましょう。本書に登場する多くの検定統計量と違い，この統計量は\(W\)が*小さい*値である場合に正規性からのずれがあることを示します。\(W\)統計量は最大値が1で，これはデータが「完全に正規分布」の場合です。小さな\(W\)の値は，データが正規分布でない場合です。ただし，\(W\)の標本分布は第\@ref(ch:probability)章で論じた標準的な分布とは違い，実際にはかなりやっかいです。そして，標本サイズ\(N\)によって分布が変化するのです。この標本分布がどのようなものかという感覚をつかんでもらうために，図\@ref(fig:swdist)に3つの場合について作図してみました。標本サイズが大きい場合，標本分布が\(W=1\)付近にかなり集中したものになるのがわかります。その結果，大きな標本では\(W\)の値が1からそれほど離れていなくても検定結果が有意になります。
 
-```{r swdist, warning=FALSE, echo=FALSE, out.width='50.6%', fig.align='center', fig.cap='標本サイズが10，20，50のサンプルについて，データが正規分布しているという帰無仮説におけるシャピロ・ウィルク統計量Wの標本分布。Wの小さな値は正規分布からの逸脱を示す', echo=FALSE}
+```{r swdist, warning=FALSE, echo=FALSE, out.width='50.6%', fig.align='center', fig.cap='標本サイズが10，20，50のサンプルについて，データが正規分布しているという帰無仮説におけるシャピロ・ウィルク統計量\\(W\\)の標本分布。\\(W\\)の小さな値は正規分布からの逸脱を示す', echo=FALSE}
 knitr::include_graphics("img/ttest2/shapirowilkdist.png")
 ```
 

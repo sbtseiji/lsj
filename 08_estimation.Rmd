@@ -51,7 +51,7 @@
 話を簡単にするために，ここにチップが10枚入った袋があるとしましょう。それぞれのチップには異なる文字が印刷されており，10枚のチップはすべて見分けることができます。また，チップには黒と白の2色があります。このチップ全体が関心のある母集団です。これを図にすると図\@ref(fig:srs1)の左のようになります。
 
 
-```{r srs1, warning=FALSE, echo=FALSE, out.width='52.9%', fig.align='center', fig.cap='有限母集団から復元抽出した単純無作為標本', echo=FALSE}
+```{r srs1, warning=FALSE, echo=FALSE, out.width='62.9%', fig.align='center', fig.cap='有限母集団から復元抽出した単純無作為標本', echo=FALSE}
 knitr::include_graphics("img/estimation/srs1.png")
 ```
 
@@ -60,13 +60,13 @@ knitr::include_graphics("img/estimation/srs1.png")
 
 標本抽出手続きの重要性を理解するために，別の実験の例を考えてみましょう。私の5歳になる息子が袋を開け，黒チップを4つの取り出すとします。このとき，一度取り出したチップを袋の中に戻すことはしません。この*偏った*標本抽出のケースを図\@ref(fig:brs)に示しました。さて，ここで結果として得られたのは4枚の黒チップで，白は1枚もありません。これはどう見ても標本抽出方法の違いによるものですよね。そしてもし黒チップだけを選ぶという方法で標本抽出が行われていたのだとしたら，標本のすべてが黒チップだったという結果から母集団について何かを知るということはできなくなります。こうした理由から，統計学者は標本が単純無作為抽出されていると考えることを好むのです。なぜなら，その方がデータ分析が*ずっと*簡単になるからです。
 
-```{r brs, warning=FALSE, echo=FALSE, out.width='52.9%', fig.align='center', fig.cap='有限母集団から非復元抽出した偏りのある標本。', echo=FALSE}
+```{r brs, warning=FALSE, echo=FALSE, out.width='62.9%', fig.align='center', fig.cap='有限母集団から非復元抽出した偏りのある標本。', echo=FALSE}
 knitr::include_graphics("img/estimation/brs.png")
 ```
 
 もう1つ別の方法についても言及しておく価値があるでしょう。今度も目を閉じて袋を振り，チップを1枚取り出します。ただし，今度はその結果を記録して，そしてそのチップを袋に戻します。そしてまた目を閉じて袋を振り，チップを1枚取り出すのです。そしてこの方法を4回繰り返しました。このような方法で得られたデータセットは無作為標本ではあるのですが，今回はチップを取り出すごとに毎回袋に戻すという，<span class="keyterm">復元抽出</span>と呼ばる方法が用いられています。図\@ref(fig:srs2)に示したように，この方法では母集団に含まれる同じ要素が複数回観察される場合があるという点が最初の方法とは異なります。
 
-```{r srs2, warning=FALSE, echo=FALSE, out.width='52.9%', fig.align='center', fig.cap='有限母集団から復元抽出した単純無作為標本', echo=FALSE}
+```{r srs2, warning=FALSE, echo=FALSE, out.width='62.9%', fig.align='center', fig.cap='有限母集団から復元抽出した単純無作為標本', echo=FALSE}
 knitr::include_graphics("img/estimation/srs2.png")
 ```
 
@@ -96,15 +96,15 @@ knitr::include_graphics("img/estimation/srs2.png")
 
 この考え方はとてもシンプルです。たとえばIQスコアで考えてみましょう。心理学者にとって，関心のある母集団はIQスコアをもつ人間という集団です。統計学者は，その母集団を図\@ref(fig:IQdist)の(a)に示したような確率分布として操作的に定義することで「簡略化」します。知能検査は，IQスコアの平均値が100，標準偏差が15になるように設計されており，そしてIQスコアは正規分布します。これらの値は母集団全体の特徴を表すものであることから，<span class="keyterm">母集団パラメータ</span>と呼ばれます^[訳注：母集団パラメータのことを「母数」と呼びます。世の中には分母や総数の意味で「母数」という人が大勢いますが，それは統計学的には誤りです。]。つまり，母集団の平均値\(\mu\)は100で母集団の標準偏差\(\sigma\)は15です。
 
-```{r IQdist, warning=FALSE, echo=FALSE, message=FALSE,out.width='82.4%', fig.align='center', fig.cap='IQスコアの母集団分布(a)とそこから無作為抽出された2つの標本。図の(b)は100個の観測値を含む標本で(c)は10,000個の観測値を含む標本。'}
+```{r IQdist, warning=FALSE, echo=FALSE, message=FALSE,out.width='82.4%', fig.align='center', fig.height=2.5, fig.cap='IQスコアの母集団分布(a)とそこから無作為抽出された2つの標本。図の(b)は100個の観測値を含む標本で(c)は10,000個の観測値を含む標本。'}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/estimation/IQpopulation.png"))
-p2<-as.grob(image_read("img/estimation/IQsample100.png"))
-p3<-as.grob(image_read("img/estimation/IQsample10000.png"))
+p1<-ggdraw()+draw_image("img/estimation/IQpopulation.png",y=-.1)
+p2<-ggdraw()+draw_image("img/estimation/IQsample100.png",y=-.1)
+p3<-ggdraw()+draw_image("img/estimation/IQsample10000.png",y=-.1)
 
-plot_grid(p1,p2, p3,labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.9,label_size=12)
+plot_grid(p1,p2, p3,labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.99,label_size=12)
 
 ```
 
@@ -188,7 +188,7 @@ kable(dtf, align = c('r','r','r','r','r','r'), caption='尺度水準と連続・
 
 標本分布は統計学における重要な理論的概念の1つで，小規模標本の振る舞いを理解するうえで非常に重要なものです。たとえば，私が1番最初の「5人のIQスコア実験」を行ったとき，標本の平均値は95でした。しかし図\@ref(fig:sampdistmean)の標本分布からわかるように，「5人のIQスコア実験」の結果はあまり正確ではありません。ですが，もしこの実験を繰り返したとしたら，標本の平均値は80から120の間の値になるということがこの標本分布から期待できます。
 
-```{r sampdistmean, warning=FALSE, echo=FALSE, out.width='41.2%', fig.align='center', fig.cap='「5人のIQスコア実験」の平均値の標本分布。もし無作為に抽出した5人の「平均」IQスコアを計算すれば，IQ120を超えるものや80未満の者がたくさんいたとしても，ほとんどの場合，その結果は80から120の間の値となる。黒い線で示したのは母集団におけるIQスコアの分布。', echo=FALSE}
+```{r sampdistmean, warning=FALSE, echo=FALSE, out.width='41.2%', fig.align='center', fig.cap='「5人のIQスコア実験」の平均値の標本分布。無作為に抽出した5人の「平均」IQスコアを計算すれば，IQ120を超えるものや80未満の者がたくさんいたとしても，ほとんどの場合，その結果は80から120の間の値となる。黒い線で示したのは母集団におけるIQスコアの分布。', echo=FALSE}
 knitr::include_graphics("img/estimation/samplingDist4.png")
 ```
 
@@ -202,7 +202,7 @@ knitr::include_graphics("img/estimation/samplingDist4.png")
 
 これを何度も繰り返すと，先ほどとはだいぶ異なる標本分布が得られます。名づけて*最大値の標本分布*です。5人のIQスコアの最大値の標本分布は図\@ref(fig:sampdistmax)に示しました。驚くまでもなく，5人を無作為に抽出し，その中でもっともIQの高い人を選んだとしたら，その人たちは平均以上のIQを持っていることになるのです。そしてほとんどの場合，その人たちのIQスコアは100から140の範囲に入ることになります。
 
-```{r sampdistmax, warning=FALSE, echo=FALSE, out.width='47.1%', fig.align='center', fig.cap='「5人のIQスコア実験」における**最大値**の標本分布。もし無作為に選んだ5人のIQスコアの最大値を求めれば，その結果はほとんどの場合100から140になる。', echo=FALSE}
+```{r sampdistmax, warning=FALSE, echo=FALSE, out.width='47.1%', fig.align='center', fig.cap='「5人のIQスコア実験」における**最大値**の標本分布。無作為に選んだ5人のIQスコアの最大値を求めれば，その結果はほとんどの場合100から140になる。', echo=FALSE}
 knitr::include_graphics("img/estimation/samplingDistMax.png")
 ```
 
@@ -211,30 +211,31 @@ knitr::include_graphics("img/estimation/samplingDistMax.png")
 
 ここまでで，標本分布がどのようなものか，とくに平均値の標本分布がどのようなものかについての感覚を十分につかんでいただけたのではないかと思います。そこでこのセクションでは，平均値の標本分布が標本サイズによって変化するということについて説明したいと思います。これがどのようになるのかについては，皆さんは部分的にもうその答えを知っています。もし観測値がわずかしかないなら，標本の平均値は非常に不正確になる可能性があります。小規模な実験を何度も繰り返して平均値を計算し直したとすると，その都度大きく異なった答えになることでしょう。つまり，標本分布は非常に大きくなります。そしてもし大規模な実験を繰り返し，標本の平均値を計算したとしたら，平均値はおそらく毎回同じような値になることでしょう。つまり，標本分布は非常に小さくなります。これを視覚的に示したのが図\@ref(fig:IQsamp)で，標本サイズが大きいほど標本分布が小さく（狭く）なることがわかります。これは，標本分布の標準偏差という形で，数値で表すこともできます。そしてこの値は<span class="keyterm">標準誤差</span>（standard error）と呼ばれています。統計量の標準誤差はしばしば「SE」と表記されます。また，ほとんどの場合は*平均値*の標準誤差が対象となるので，SEM（standard error of mean）という略語で表されることもよくあります。先ほど図で見たように，標本サイズ\(N\)が大きくなるほど，標準誤差は小さくなります。
 
-```{r IQsamp, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='平均値の標本分布が標本サイズによりどう変化するかを示したもの。IQデータセットを10,000標本生成し，各データセットの平均IQスコアを算出した。図のヒストグラムは，それぞれの平均値の分布（平均値の標本分布）を示す。いずれのデータセットも，IQスコアは黒の実線で示した平均値100で標準偏差15の正規分布から抽出されている。図(a)では，各データセットには1つの観測値しか含まれていないため，各標本の平均値は1人のIQスコアにすぎない。結果として，平均値の標本分布は母集団のIQスコア分布と同じになる。しかし標本サイズを2にすると，各標本の平均値は1人のIQスコアの場合よりも母集団の平均値に近くなる傾向にあり，ヒストグラム（標本分布）は母集団の分布よりも狭い幅に集まる。標本サイズを10（図の(c)）にすると，標本の平均値の分布は母集団の真の平均値の周辺に密集する傾向にあることがわかる。', echo=FALSE}
+```{r IQsamp,  warning=FALSE, echo=FALSE, message=FALSE,out.width='82.4%', fig.align='center', fig.height=2.5, fig.cap='平均値の標本分布が標本サイズによりどう変化するかを示したもの。IQデータセットを10,000標本生成し，各データセットの平均IQスコアを算出した。図のヒストグラムは，それぞれの平均値の分布（平均値の標本分布）を示す。いずれのデータセットも，IQスコアは黒の実線で示した平均値100で標準偏差15の正規分布から抽出されている。図(a)では，各データセットには1つの観測値しか含まれていないため，各標本の平均値は1人のIQスコアにすぎない。結果として，平均値の標本分布は母集団のIQスコア分布と同じになる。しかし標本サイズを2にすると，各標本の平均値は1人のIQスコアの場合よりも母集団の平均値に近くなる傾向にあり，ヒストグラム（標本分布）は母集団の分布よりも狭い幅に集まる。標本サイズを10（図の(c)）にすると，標本の平均値の分布は母集団の真の平均値の周辺に密集する傾向にあることがわかる。', echo=FALSE}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/estimation/samplingDist1.png"))
-p2<-as.grob(image_read("img/estimation/samplingDist2.png"))
-p3<-as.grob(image_read("img/estimation/samplingDist3.png"))
+p1<-ggdraw()+draw_image("img/estimation/samplingDist1.png")
+p2<-ggdraw()+draw_image("img/estimation/samplingDist2.png")
+p3<-ggdraw()+draw_image("img/estimation/samplingDist3.png")
 
-plot_grid(p1,p2, p3,labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.9,label_size=12)
+plot_grid(p1,p2, p3,labels=c("(a)", "(b)", "(c)"),ncol=3,label_size=12)
 ```
+
 
 
 さて，これで基本的な部分についての説明は終わりです。ただし，ここまでのところでまだ触れていないことがあります。ここまでの例はどれも「IQスコア実験」を扱っていました。IQスコアは大体正規分布するので，母集団分布が正規分布の場合の例として取りあげてきたわけです。では，正規分布でなかったら平均値の標本分布はどのようになるでしょうか。なんと，元の母集団分布がどのような形であるかに関係なく，\(N\)が増加するにつれて平均値の標本分布は正規分布に近づいていくのです。これを感覚的に理解するために，あるシミュレーションを行ってみましょう。ここでは図\@ref(fig:cltdemo)の(a)のヒストグラムに見られるような「傾いた」分布を使うことにします。この三角のヒストグラムと黒い線で示された釣り鐘曲線を見比べれば，母集団の分布が正規分布になっていないことがわかります。次に，たくさんの実験結果をシミュレーションしました。各実験では，この分布から\(N=2\)の標本を抽出し，そして標本の平均値を算出しています。図\@ref(fig:cltdemo)の(b)は，標本の平均値のヒストグラムです（つまり\(N=2\)の場合の平均値の標本分布）。すると，ヒストグラムは\(\cap\)型の分布になりました。これでもまだ正規分布ではありませんが，図\@ref(fig:cltdemo)の(a)に比べると，背景の黒線にだいぶ近くなっています。では標本サイズを\(N=4\)にしてみましょう。すると，平均値の標本分布はかなり正規分布に近くなりました（図\@ref(fig:cltdemo)の(c)）。さらに標本サイズを\(N=8\)にすると，ほぼ正規分布になります。つまり，標本サイズがよほど小さなものでない限り，母集団の分布がどのような形かに関係なく，平均値の標本分布はおおよそ正規分布になるのです。
 
-```{r cltdemo, warning=FALSE, echo=FALSE,message=FALSE, out.width='82.4%', fig.align='center', fig.cap='中心極限定理のデモ。図(a)は非正規分布の母集団の分布，図(b)から(d)は図(a)の分布から抽出された標本サイズ2，4，8の標本の平均値の標本分布を示す。見ての通り，たとえ元の母集団分布が非正規であっても，標本サイズがわずか4の場合ですら平均値の標本分布は正規分布に近くなる。', echo=FALSE}
+```{r cltdemo, warning=FALSE, echo=FALSE,message=FALSE, out.width='82.4%', fig.align='center', fig.height=8, fig.cap='中心極限定理のデモ。図(a)は非正規分布の母集団の分布，図(b)から(d)は図(a)の分布から抽出された標本サイズ2，4，8の標本の平均値の標本分布を示す。見ての通り，たとえ元の母集団分布が非正規であっても，標本サイズがわずか4の場合ですら平均値の標本分布は正規分布に近くなる。', echo=FALSE}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/estimation/cltDemo1.png"))
-p2<-as.grob(image_read("img/estimation/cltDemo2.png"))
-p3<-as.grob(image_read("img/estimation/cltDemo4.png"))
-p4<-as.grob(image_read("img/estimation/cltDemo8.png"))
+p1<-ggdraw()+draw_image("img/estimation/cltDemo1.png")
+p2<-ggdraw()+draw_image("img/estimation/cltDemo2.png")
+p3<-ggdraw()+draw_image("img/estimation/cltDemo4.png")
+p4<-ggdraw()+draw_image("img/estimation/cltDemo8.png")
 
-plot_grid(p1,p2, p3, p4, labels=c("(a)", "(b)", "(c)","(d)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, p3, p4, labels=c("(a)", "(b)", "(c)","(d)"),ncol=2,scale=.85,label_size=12)
 
 ```
 
@@ -299,12 +300,12 @@ knitr::include_graphics("img/estimation/samplingDistSampleSD.png")
 
 では，このシミュレーションをもう少し拡張してみましょう。今度は標本サイズを\(N=2\)に限定するのではなく，1から10まで変化させながら繰り返してみます。標本の平均値と標準偏差の平均値を標本サイズごとに求めて図示したものが図\@ref(fig:estimatorbias)です。図の左側の(a)には標本の平均値を，右側の(b)には標準偏差の平均値が示してあります。この2つの図はかなり異なっていますね。*平均的に*，標本の平均値は母集団の平均値とほぼ同じ値になっています。
 
-```{r estimatorbias, warning=FALSE, echo=FALSE, message=FALSE,out.width='82.4%', fig.align='center', fig.cap='標本の平均値は母集団平均値の不偏推定値であるが（図の(a)），標本の標準偏差は母集団標準偏差に対する偏りありの推定値である（図の(b)）。 この図では，まず1つの観測値を含む標本の抽出を10,000回シミュレートし，次に2つの観測値を含む標本の抽出を10,000回シミュレートし，という形で標本サイズ10までシミュレーションを行った。各データセットは架空のIQデータであり，母集団平均値は100，標準偏差は15である。平均値の場合，標本平均値は標本サイズに関係なく100に近い値になる（図の(a)）。しかし，標本の標準偏差は小さすぎる（図(b)）値になることがわかる。とくに標本サイズが小さい場合にその傾向が顕著である。', echo=FALSE}
+```{r estimatorbias, warning=FALSE, echo=FALSE, message=FALSE,out.width='82.4%', fig.align='center', fig.height=3, fig.cap='標本の平均値は母集団平均値の不偏推定値であるが（図の(a)），標本の標準偏差は母集団標準偏差に対する偏りありの推定値である（図の(b)）。 この図では，まず1つの観測値を含む標本の抽出を10,000回シミュレートし，次に2つの観測値を含む標本の抽出を10,000回シミュレートし，という形で標本サイズ10までシミュレーションを行った。各データセットは架空のIQデータであり，母集団平均値は100，標準偏差は15である。平均値の場合，標本平均値は標本サイズに関係なく100に近い値になる(a)。しかし，標本の標準偏差は小さすぎる(b)値になることがわかる。とくに標本サイズが小さい場合にその傾向が顕著である。', echo=FALSE}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/estimation/biasSD.png"))
-p2<-as.grob(image_read("img/estimation/biasMean.png"))
+p1<-ggdraw()+draw_image("img/estimation/biasSD.png")
+p2<-ggdraw()+draw_image("img/estimation/biasMean.png")
 
 plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
 
@@ -380,14 +381,14 @@ $$  \mbox{CI}_{95} = \overline{X} \pm \left( 1.96 \times \frac{\sigma}{\sqrt{N}}
 
 信頼区間でもっとも難しいのは，その*意味*についての理解です。初めて信頼区間というものに遭遇したとき，誰もが最初は「真の平均値は95%の確率でこの信頼区間の間にある」のように思ったはずです。なるほど，私が「95%確かだ」と言った場合の一般的な意味はその通りでしょう。でも残念ながら，これは正しくないのです。この直感的な定義には，母集団の平均値に対するあなたの個人的な*信念*が強く関係しています。私が「私は95%確信がある」といったとき，それは私の信念なのです。日常生活ではこれでまったく問題ありません。ですが，セクション\@ref(sec:probmeaning)を思い出してください。個人的な信念や確信について話すのはベイズ主義の考え方です。しかし，信頼区間はベイズ主義のツールでは*ありません*。本章の他の内容と同じく，信頼区間は*頻度主義*のツールであり，頻度主義のツールを使うのであれば，それに対してベイズ主義的なアプローチをあてはめてはならないのです。頻度主義の方法を使用するのであれば，頻度主義的な解釈をしなくてはなりません。
 
-では，正しい解釈というのはどのようなものでしょうか。頻度主義の確率論について説明したことを思い出してください。「確率的記述」をして良いのは事象が反復する場合だけであり，そしてそこでできるのは異なる事象の頻度を数えることだけです。この視点をとるならば，95%信頼区間の解釈は反復に関連したものになるはずです。具体的に言うと，仮に私たちが同じ実験を何度も繰り返してその都度95%信頼区間を計算するということを行ったとしたら，それらの*区間*のうちの95%が真の平均値を含んでいる，というのが正しい解釈です。より一般的には，この手続きで算出された信頼区間全体の95%が，母集団の真の平均値を含むことになるのです。この考え方を図\@ref(fig:cirep)に示しました。ここでは，「10人のIQスコア」実験を50回行って算出した信頼区間（図(a)）と，「25人のIQスコア」実験を50回行って算出した信頼区間（図(b)）が示されています。偶然にも，シミュレーションした計100回の反復のうち，ちょうど95%に真の平均値が含まれていました。
+では，正しい解釈というのはどのようなものでしょうか。頻度主義の確率論について説明したことを思い出してください。「確率的記述」をして良いのは事象が反復する場合だけであり，そしてそこでできるのは異なる事象の頻度を数えることだけです。この視点をとるならば，95%信頼区間の解釈は反復に関連したものになるはずです。具体的に言うと，仮に私たちが同じ実験を何度も繰り返してその都度95%信頼区間を計算するということを行ったとしたら，それらの*区間*のうちの95%が真の平均値を含んでいる，というのが正しい解釈です。より一般的には，この手続きで算出された信頼区間全体の95%が，母集団の真の平均値を含むことになるのです。この考え方を図\@ref(fig:cirep)に示しました。ここでは，「10人のIQスコア」実験を50回行って算出した信頼区間（図の(a)）と，「25人のIQスコア」実験を50回行って算出した信頼区間（図の(b)）が示されています。偶然にも，シミュレーションした計100回の反復のうち，ちょうど95%に真の平均値が含まれていました。
 
-```{r cirep, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='95％信頼区間の図。上の図(a)には，10人のIQを測定するという実験を50回反復した結果が示されている。点は標本平均値の位置を示し，線は95％信頼区間を示す。50個の信頼区間のうち47個では真の平均値（すなわち100）が含まれているが，＊印でマークされた3個の区間には真の平均値は含まれていない。下の図(b)も同様で，こちらは25人のIQを測定するという実験の反復をシミュレートしている。', echo=FALSE}
+```{r cirep, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='95％信頼区間の図。図の(a)には，10人のIQを測定するという実験を50回反復した結果が示されている。点は標本平均値の位置を示し，線は95％信頼区間を示す。50個の信頼区間のうち47個では真の平均値（すなわち100）が含まれているが，＊印でマークされた3個の区間には真の平均値は含まれていない。下の(b)も同様で，こちらは25人のIQを測定するという実験の反復をシミュレートしている。', echo=FALSE}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/estimation/confIntReplicated.png"))
-p2<-as.grob(image_read("img/estimation/confIntReplicated2.png"))
+p1<-ggdraw()+draw_image("img/estimation/confIntReplicated.png")
+p2<-ggdraw()+draw_image("img/estimation/confIntReplicated2.png")
 
 plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=1,scale=.9,label_size=12)
 

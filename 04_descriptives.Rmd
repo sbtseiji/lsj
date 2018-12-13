@@ -14,7 +14,7 @@ knitr::include_graphics("img/descriptives/aflsmall_margins.png")
 
 この結果だけでは，このデータが実際に何を意味するのかはわかりません。単に「データを見る」だけでは，効率的にデータを理解することはできないのです。そのデータに実際にどんな意味があるのかを理解するためには，記述統計量（本章）を算出してわかりやすい図（第\@ref(ch:graphics)章）を作成する必要があります。図と記述統計では記述統計から始める方が簡単ですのでこちらから始めようと思いますが，まずは<span class="rtext">afl.margins</span>データのヒストグラムを示しておきます（図\@ref(fig:histogram1)）。これを見れば，これから説明しようとするデータが実際にどんな風に見えるのかが大体わかっていただけるのではないでしょうか。なお，ヒストグラムの作成方法についてはセクション\@ref(sec:hist)で説明しますので，今のところヒストグラムは見るだけで十分です。この図を見ると<span class="rtext">afl.margins</span>データがどういうものかがとてもよくわかります。
 
-```{r histogram1, warning=FALSE, echo=FALSE, out.width='70.6%', fig.align='center', fig.cap='AFL2010得点差データ（<span class="rtext">afl.margins</span>変数）のヒストグラム。これを見ると，大きな得点差はそれほど多く生じないことがわかる。', echo=FALSE}
+```{r histogram1, warning=FALSE, echo=FALSE, out.width='60.6%', fig.align='center', fig.cap='AFL2010得点差データ（<span class="rtext">afl.margins</span>変数）のヒストグラム。これを見ると，大きな得点差はそれほど多く生じないことがわかる。', echo=FALSE}
 knitr::include_graphics("img/descriptives/aflMargins.png")
 ```
 
@@ -114,14 +114,14 @@ $$
 -   間隔尺度や比率尺度の場合には，平均値と中央値のどちらも使用することができます。どちらを選択すべきかというのは，何を見たいかによって異なります。平均値はデータに含まれるすべての情報を使用するという利点があります（これはデータがそれほどたくさんではない場合に役立ちます）。ただし，極端な値（外れ値）よる影響を受けやすいという特徴があります。
 
 
-```{r meanmedian, warning=FALSE, echo=FALSE, message=FALSE, out.width='70.6%', fig.align='center', fig.cap='平均値と中央値の違い。平均値は基本的にデータセットの「重心」。ヒストグラムでそれぞれのデータをブロックとして表したとき，シーソーのようにバランスが取れる地点が平均値になる。これに対し，中央値は中央にあるブロックのことであり，そのブロックよりも大きな観測値と小さな観測値のブロックは数が同じになる。'}
+```{r meanmedian, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=4, fig.cap='平均値と中央値の違い。平均値は基本的にデータセットの「重心」。ヒストグラムでそれぞれのデータをブロックとして表したとき，シーソーのようにバランスが取れる地点が平均値になる(a)。これに対し，中央値は中央にあるブロックのことであり，そのブロックよりも大きな観測値と小さな観測値のブロックは数が同じになる(b)。'}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/descriptives2/mean.png"))
-p2<-as.grob(image_read("img/descriptives2/median.png"))
+p1<-ggdraw()+draw_image("img/descriptives2/mean.png")
+p2<-ggdraw()+draw_image("img/descriptives2/median.png")
 
-plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,label_size=12)
 
 ```
 
@@ -341,7 +341,7 @@ $$
 
 ときどき話には上るものの実際には滅多にお目にかかることのない最後の指標がデータの<span class="keyterm">尖度</span>（kurtosis）です。簡単に言えば，尖度とはデータの「とんがり」具合のことです（図\@ref(fig:kurtosis)）。慣例では，「正規曲線」（黒線）の場合を尖度0とします。つまり，この曲線を基準にしてとんがり具合を評価するわけです。
 
-```{r kurtosis, warning=FALSE, echo=FALSE, out.width='$4', fig.align='center', fig.cap='尖度の図。図の左は「緩尖的」，つまり「平たく潰れた」のデータセットの場合（尖度=&minus;.95）。中央は「中尖的」なデータセットでデータのとんがり具合がちょうど良い場合（尖度=0）。図の右は「急尖的」なデータセットで，データが「とんがりすぎている」場合（尖度=2.12）。尖度は正規曲線（黒線）を基準に測定されるものであることに注意。', echo=FALSE}
+```{r kurtosis, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='尖度の図。図の左は「緩尖的」，つまり「平たく潰れた」のデータセットの場合（尖度=&minus;.95）。中央は「中尖的」なデータセットでデータのとんがり具合がちょうど良い場合（尖度=0）。図の右は「急尖的」なデータセットで，データが「とんがりすぎている」場合（尖度=2.12）。尖度は正規曲線（黒線）を基準に測定されるものであることに注意。', echo=FALSE}
 knitr::include_graphics("img/descriptives/kurtosis.png")
 ```
 

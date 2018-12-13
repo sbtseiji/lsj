@@ -632,7 +632,7 @@ kable(dt, align = c('c','c','c','c')) %>%
 
 それぞれの検定で算出された統計量を図\@ref(fig:indpaired)に示しました。結果が異なっていることに注意してください。これらは別の検定です。
 
-```{r indpaired, warning=FALSE, echo=FALSE, out.width='70.6%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>での独立性の検定の結果とマクニマー検定の結果', echo=FALSE}
+```{r indpaired, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>での独立性の検定の結果とマクニマー検定の結果', echo=FALSE}
 knitr::include_graphics("img/chisquare/ind_paired.png")
 ```
  

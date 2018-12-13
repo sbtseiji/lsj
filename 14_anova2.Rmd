@@ -229,18 +229,18 @@ $$
 
 ### この分析で捉えられているもの
 
-ここまで話してきた分散分析モデルには，データに観察されるさまざまなパターンが含まれています。たとえば，2要因分散分析では(a)要因Aのみが重要，(b)要因Bのみが重要，(c)要因AとBの両方が重要，(d)要因AもBも重要でない，という4つの可能性があります。この4つの可能性について，その例を図\@ref(fig:maineffects)に示しました。
+ここまで話してきた分散分析モデルには，データに観察されるさまざまなパターンが含まれています。たとえば，2要因分散分析では(a)要因Aのみが効果がある，(b)要因Bのみ効果がある，(c)要因AとBの両方に効果がある，(d)要因AもBも効果がない，という4つの可能性があります。この4つの可能性について，その例を図\@ref(fig:maineffects)に示しました。
 
-```{r maineffects, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='主効果のみの場合の2×2分散分析の4つの結果パターン。図の(a)では要因Aの主効果が見られ，要因Bの主効果は見られない。図の(b)は要因Bの主効果があるが，要因Aの主効果はない。図の(c)は，要因AとBの両方に主効果がある。最後に，図の(d)はいずれの要因にも主効果がない。'}
+```{r maineffects, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.height=6, fig.align='center', fig.cap='主効果のみの場合の2×2分散分析の4つの結果パターン。図の(a)では要因Aの主効果が見られ，要因Bの主効果は見られない。図の(b)は要因Bの主効果があるが，要因Aの主効果はない。図の(c)は，要因AとBの両方に主効果がある。最後に，図の(d)はいずれの要因にも主効果がない。'}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/factorialanova/maineffectA.png"))
-p2<-as.grob(image_read("img/factorialanova/maineffectB.png"))
-p3<-as.grob(image_read("img/factorialanova/maineffectAB.png"))
-p4<-as.grob(image_read("img/factorialanova/maineffectO.png"))
+p1<-ggdraw()+draw_image("img/factorialanova/maineffectA.png")
+p2<-ggdraw()+draw_image("img/factorialanova/maineffectB.png")
+p3<-ggdraw()+draw_image("img/factorialanova/maineffectAB.png")
+p4<-ggdraw()+draw_image("img/factorialanova/maineffectO.png")
 
-plot_grid(p1,p2,p3,p4, labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2,p3,p4, labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.95,label_size=12)
 ```
 
 多元配置分散分析（その2）　釣り合い型デザインで交互作用あり {#sec:interactions}
@@ -248,16 +248,15 @@ plot_grid(p1,p2,p3,p4, labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.9,label
 
 図\@ref(fig:maineffects)の4つのパターンはどれも実際によく見られるものです。このようなパターンを示すデータは本当にたくさんあります。ですが，これらがすべてではありません。そして，ここまで見てきた分散分析モデルも，グループ平均値の表を完全には説明できてていません。それはなぜでしょうか。それは，ここまでのところでは投薬条件が気分に影響する可能性や心理療法が気分に影響する可能性については見てきましたが，この2つの間の<span class="keyterm">交互作用</span>については見てこなかったからです。要因AとBの間の交互作用とは，要因Aの影響が要因Bの水準によって異なる場合のことを言います。\(2 \times 2\)の分散分析における交互作用の例を図\@ref(fig:interaction)に示しました。
 
-```{r interaction, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='2×2分散分析の交互作用の例'}
+```{r interaction, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.height=6, fig.align='center', fig.cap='2×2分散分析の交互作用の例'}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
+p1<-ggdraw()+draw_image("img/factorialanova/interaction2.png")
+p2<-ggdraw()+draw_image("img/factorialanova/interaction3.png")
+p3<-ggdraw()+draw_image("img/factorialanova/interaction1.png")
+p4<-ggdraw()+draw_image("img/factorialanova/interaction4.png")
 
-p1<-as.grob(image_read("img/factorialanova/interaction2.png"))
-p2<-as.grob(image_read("img/factorialanova/interaction3.png"))
-p3<-as.grob(image_read("img/factorialanova/interaction1.png"))
-p4<-as.grob(image_read("img/factorialanova/interaction4.png"))
-
-plot_grid(p1,p2,p3,p4, labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2,p3,p4, labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.95,label_size=12)
 ```
 
 もう少し具体的な例で考えるために，アンシフリーとジョイゼパムがかなり異なる生理学的メカニズムで作用していたとしましょう。その結果，たとえばジョイゼパムの効果は心理療法を受けるかどうかに関係なくだいたい同じなのに対し，アンシフリーは認知行動療法とセットにした場合に非常に効果的であるというようなことがあるかもしれません。先ほどのセクションで説明した分散分析では，この部分が捉えきれていないのです。交互作用が実際にあるかどうかを知るには，まずは各グループの平均値を見てみるのがよいでしょう。<span class="jamovi">jamovi</span>の「**Exploration**（探索）」メニューの「**Descriptives**（記述統計）」で，「**Variables**（変数）」に<span class="rtext">mood.gain</span>，「**Split by**（グループ変数）」に<span class="rtext">drug</span>と<span class="rtext">therapy</span>を指定して，「**Statistics**（統計量）」の欄で「**Mean**（平均値）」にチェックを入れて平均値を算出します。平均値だけを表示させると，結果は図\@ref(fig:interactiontable)のようになるはずです。数値だけではわかりにくいという人は，表計算ソフトなどを使ってこの平均値をグラフにしてみてもいいでしょう。平均値のグラフの例が図\@ref(fig:interanctionplot)です^[訳注：以前のバージョンでは，「ANOVA」メニューの中に「Descriptive Plots」というオプションがあり，そこからグラフを作成できたのですが，最近のバーションではそれがなくなってしまいました。このグラフは「ANOVA」メニューの「Estimated Marginal Means（周辺平均の推定）」オプションで作成したものです。なお，この図を作成するためには分析モデルに主効果と交互作用をすべて含める必要があります。]。ここでの主な関心は，グラフ中の2本の線が平行でないかどうかということです。ジョイゼパムを投与されたグループの認知行動療法の平均値と心理療法なしの平均値はほぼ同じで（グラフの中央），その差はプラシボの場合の両条件の差（グラフの一番右）よりも小さくなっています。ところが，アンシフリーが投与された場合には，認知行動療法と心理療法なしの差はプラシボより大きくなっています（グラフの一番左）。こうした差は本物でしょうか。それとも単なる偶然によるものでしょうか。先ほどの分散分析ではこの問いには答えられません。なぜなら，交互作用が存在するということを一切考慮していないからです。そこでこの問題を修正することにしましょう。
@@ -943,8 +942,8 @@ $$
 
 $$
 \begin{array}{ll}
-帰無仮説モデル: & 無駄話 \sim 切片 + 砂糖 + 砂糖 {\times} ミルク\\
-対立仮説モデル:& 無駄話 \sim 切片+ 砂糖 + ミルク+ 砂糖 {\times} ミルク
+帰無仮説モデル: & 無駄話 = 切片 + 砂糖 + 砂糖 {\times} ミルク\\
+対立仮説モデル:& 無駄話 = 切片+ 砂糖 + ミルク+ 砂糖 {\times} ミルク
 \end{array}
 $$
 
@@ -952,8 +951,8 @@ $$
 
 $$
 \begin{array}{ll}
-帰無仮説モデル:& 無駄話 \sim 切片 + 砂糖 + ミルク\\
-対立仮説モデル:& 無駄話 \sim 切片+ 砂糖 + ミルク+ 砂糖 {\times} ミルク
+帰無仮説モデル:& 無駄話 = 切片 + 砂糖 + ミルク\\
+対立仮説モデル:& 無駄話 = 切片+ 砂糖 + ミルク+ 砂糖 {\times} ミルク
 \end{array}
 $$
 
@@ -1002,14 +1001,14 @@ $$
 
 $$
 \begin{array}{ll}
-帰無仮説モデル: & 結果変数 \sim \rm{B}+\rm{C}+\rm{B}{\times}\rm{C}\\
-対立仮説モデル:& 結果変数 \sim \rm{A}+\rm{B}+\rm{C}+\rm{B}{\times}\rm{C}
+帰無仮説モデル: & 結果変数 = \rm{B}+\rm{C}+\rm{B}{\times}\rm{C}\\
+対立仮説モデル:& 結果変数 = \rm{A}+\rm{B}+\rm{C}+\rm{B}{\times}\rm{C}
 \end{array}
 $$
 
 とにかく，タイプ2がどんな手順になるのかを見ておくことにしましょう。以下は3要因分散分析における検定を表にまとめたものです。
 
-| 検定<br>対象 |  帰無仮説モデル <br><span class="rtext">Y ~ \...</span>  |  対立仮説モデル <br><span class="rtext">Y ~ \...</span> |
+| 検定<br>対象 |  帰無仮説モデル <br><span class="rtext">Y = \...</span>  |  対立仮説モデル <br><span class="rtext">Y = \...</span> |
 |:--------|:----------------------------------------------|:-----------------------------------------------------|
 |<span class="rtext">A</span> | <span class="rtext">B + C + B×C</span> | <span class="rtext">A + B + C + B×C</span>|
 |<span class="rtext">B</span> | <span class="rtext">A + C + A×C</span> | <span class="rtext">A + B + C + A×C</span>|
@@ -1043,8 +1042,8 @@ $$
 
 $$
 \begin{array}{ll}
-帰無仮説モデル: & 無駄話 \sim 切片+砂糖 + ミルク\\
-対立仮説モデル:& 無駄話 \sim 切片+砂糖 + ミルク+砂糖{\times}ミルク
+帰無仮説モデル: & 無駄話 = 切片+砂糖 + ミルク\\
+対立仮説モデル:& 無駄話 = 切片+砂糖 + ミルク+砂糖{\times}ミルク
 \end{array}
 $$
 

@@ -24,15 +24,15 @@ Table: (#tab:parenthood) 子育てに関するデータの記述統計
 
 \
 
-```{r parenthood, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="rtext">parenthood</span>データセットに含まれる変数のヒストグラム'}
+```{r parenthood, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=2.5, fig.cap='<span class="rtext">parenthood</span>データセットに含まれる変数のヒストグラム'}
 
-require(magick); require(ggplot2); require(ggplotify); require(cowplot)
+require(ggplot2); require(ggplotify); require(cowplot)
 
-p1<-as.grob(image_read("img/descriptives/grumpHist1.png"))
-p2<-as.grob(image_read("img/descriptives/grumpHist2.png"))
-p3<-as.grob(image_read("img/descriptives/grumpHist3.png"))
+p1<-ggdraw()+draw_image("img/descriptives/grumpHist1.png",y=-.075)
+p2<-ggdraw()+draw_image("img/descriptives/grumpHist2.png",y=-.075)
+p3<-ggdraw()+draw_image("img/descriptives/grumpHist3.png",y=-.075)
 
-plot_grid(p1,p2, p3, labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.9,label_size=12)
+plot_grid(p1,p2, p3, labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.95,label_size=12)
 
 ```
 
@@ -41,41 +41,41 @@ plot_grid(p1,p2, p3, labels=c("(a)", "(b)", "(c)"),ncol=3,scale=.9,label_size=12
 
 2つの変数がどれだけ密接に関連しているかについてのおおよその印象をつかみたければ，散布図を作成してみると良いでしょう（図\@ref(fig:scatterparent)）。ただ，これだけではちょっと物足りない場合もあるかもしれませんね。たとえば，<span class="rtext">dan.sleep</span>（私の睡眠時間）と<span class="rtext">dan.grump</span>（私の不機嫌さ）の関係（図\@ref(fig:scatterparent)の左の図）と，<span class="rtext">baby.sleep</span>（私の息子の睡眠時間）と<span class="rtext">dan.grump</span>（私の不機嫌さ）の関係（図\@ref(fig:scatterparent)の右の図）を比較してみましょう。2つの散布図を見比べてみると，どちらの関係も*質的*には同じであることがわかります。つまり，睡眠時間が長くなるほど不機嫌さが低下するのです。また，<span class="rtext">dan.sleep</span>（私の睡眠時間）と<span class="rtext">dan.grump</span>（私の不機嫌さ）の関係は，<span class="rtext">baby.sleep</span>（息子の睡眠時間）と<span class="rtext">dan.grump</span>（私の睡眠時間）の関係よりも*強い*こともわかります。左側の図の方が右側の図よりも点が「そろって」いますよね。これがどういうことかというと，仮にあなたが私の気分を予測したいとしたとき，私の息子が何時間寝たかがわかっても予測にはあまり役立ちませんが，私が何時間寝たかがわかった場合には*ずっと*役立つだろうということです。
 
-```{r scatterparent, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="rtext">dan.sleep</span>と<span class="rtext">dan.grump</span>の関係を示した散布図（左）と<span class="rtext">baby.sleep</span>と<span class="rtext">dan.grump</span>の関係を示した散布図（右）。'}
+```{r scatterparent, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.height=3.5, fig.align='center', fig.cap='<span class="rtext">dan.sleep</span>と<span class="rtext">dan.grump</span>の関係を示した散布図(a)と<span class="rtext">baby.sleep</span>と<span class="rtext">dan.grump</span>の関係を示した散布図(b)。'}
 
+p1<-ggdraw()+draw_image("img/descriptives/grumpCor1.png",y=-.05)
+p2<-ggdraw()+draw_image("img/descriptives/grumpCor2.png",y=-.05)
 
-p1<-as.grob(image_read("img/descriptives/grumpCor1.png"))
-p2<-as.grob(image_read("img/descriptives/grumpCor2.png"))
-
-plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 ```
 
-今度は，図\@ref(fig:scatterparent2)の散布図で考えてみましょう。<span class="rtext">baby.sleep</span>（息子の睡眠時間）と<span class="rtext">dan.grump</span>（私の不機嫌さ）の散布図（左）と，<span class="rtext">baby.sleep</span>（息子の睡眠時間）と<span class="rtext">dan.sleep</span>（私の睡眠時間）の散布図（右）を比べると，全体的な関係の強さは同じですが方向が異なっています。つまり，息子の睡眠時間が長くなれば，私も*たくさん*寝ることができる（プラスの関係，右図）のに対し，息子がたくさん寝れば，私の不機嫌さは*下がる*（マイナスの関係，左図）のです。
+今度は，図\@ref(fig:scatterparent2)の散布図で考えてみましょう。<span class="rtext">baby.sleep</span>（息子の睡眠時間）と<span class="rtext">dan.grump</span>（私の不機嫌さ）の散布図(a)と，<span class="rtext">baby.sleep</span>（息子の睡眠時間）と<span class="rtext">dan.sleep</span>（私の睡眠時間）の散布図(b)を比べると，全体的な関係の強さは同じですが方向が異なっています。つまり，息子の睡眠時間が長くなれば，私も*たくさん*寝ることができる（プラスの関係，右図）のに対し，息子がたくさん寝れば，私の不機嫌さは*下がる*（マイナスの関係，左図）のです。
 
-```{r scatterparent2, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="rtext">baby.sleep</span>と<span class="rtext">dan.grump</span>の関係を示した散布図（左）と<span class="rtext">baby.sleep</span>と<span class="rtext">dan.sleep</span>の関係を示した散布図（右）。'}
+```{r scatterparent2, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.height=3.5, fig.align='center', fig.cap='<span class="rtext">baby.sleep</span>と<span class="rtext">dan.grump</span>の関係を示した散布図(a)と<span class="rtext">baby.sleep</span>と<span class="rtext">dan.sleep</span>の関係を示した散布図(b)。'}
 
-p1<-as.grob(image_read("img/descriptives/grumpCor2.png"))
-p2<-as.grob(image_read("img/descriptives/grumpCor3.png"))
+p1<-ggdraw()+draw_image("img/descriptives/grumpCor2.png",y=-.05)
+p2<-ggdraw()+draw_image("img/descriptives/grumpCor3.png",y=-.05)
 
-plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 ```
 
 ### 相関係数
 
 こうした関係は，<span class="keyterm">相関係数</span>（correlation coefficient），より正確にはピアソンの積率相関係数と呼ばれる考え方を導入するとはっきりと示せるようになります。相関係数は，一般的には\(r\)と書かれます。詳しくは次のセクションで説明しますが，2つの変数\(X\)と\(Y\)の相関係数（\(r_{XY}\)と書かれることもあります）は，\(-1\)から\(1\)までの値になります。\(r = -1\)の場合，2変数の相関が完全に負（マイナス）であり，\(r = 1\)の場合にはそれが完全に正（プラス）であることを意味します。そして\(r = 0\)の場合は，まったく相関がないということです。図\@ref(fig:corr)には，さまざまな相関の値がどのような散布図になるかを示してあります。
 
-```{r corr, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='相関の強さと向きの説明図。 左側は，相関が0，.33，.66，および1の場合，右側は相関が0，&minus;.33，&minus;.66および&minus;1の場合。'}
+```{r corr, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=9, fig.cap='相関の強さと向きの説明図。 左側は，相関が0，.33，.66，および1の場合，右側は相関が0，&minus;.33，&minus;.66および&minus;1の場合。'}
 
-p1<-as.grob(image_read("img/descriptives/corr0.png"))
-p2<-as.grob(image_read("img/descriptives/corr0.png"))
-p3<-as.grob(image_read("img/descriptives/corr33.png"))
-p4<-as.grob(image_read("img/descriptives/corr33n.png"))
-p5<-as.grob(image_read("img/descriptives/corr67.png"))
-p6<-as.grob(image_read("img/descriptives/corr67n.png"))
-p7<-as.grob(image_read("img/descriptives/corr100.png"))
-p8<-as.grob(image_read("img/descriptives/corr100n.png"))
 
-plot_grid(p1,p2, p3, p4,p5,p6,p7,p8, labels=c("0.00", "0.00","0.33", "–0.33","0.66", "–0.66","1.00", "–1.00"),ncol=2,scale=.9,label_size=12)
+p1<-ggdraw()+draw_image("img/descriptives/corr0.png")
+p2<-ggdraw()+draw_image("img/descriptives/corr0.png")
+p3<-ggdraw()+draw_image("img/descriptives/corr33.png")
+p4<-ggdraw()+draw_image("img/descriptives/corr33n.png")
+p5<-ggdraw()+draw_image("img/descriptives/corr67.png")
+p6<-ggdraw()+draw_image("img/descriptives/corr67n.png")
+p7<-ggdraw()+draw_image("img/descriptives/corr100.png")
+p8<-ggdraw()+draw_image("img/descriptives/corr100n.png")
+
+plot_grid(p1,p2, p3, p4,p5,p6,p7,p8, labels=c("0.00", "0.00","0.33", "–0.33","0.66", "–0.66","1.00", "–1.00"),ncol=2,scale=.80,label_size=12)
 ```
 
 ピアソンの相関係数には，さまざまな式の書き方があります。この式を書く方法として一番シンプルだと私が思うのは，式を2つのステップに分けるというやり方です。まず，<span class="keyterm">共分散</span>（covariance）という考えを導入します。2つの変数\(X\)と\(Y\)の共分散は，分散の考え方をより一般化したもので，2変数間の関係を数学的な形で簡潔に表したものです。ただし，この値は人間にとってはあまり多くの情報を与えてくれません。
@@ -138,12 +138,12 @@ gsub("</tr>
 
 ```{r anscombe, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='アンスコムの例。 これらの4つのデータはどれもピアソンの相関係数は\\(r=.816\\)であるが，質的には互いに異なっている。'}
 
-p1<-as.grob(image_read("img/descriptives/anscombe1.png"))
-p2<-as.grob(image_read("img/descriptives/anscombe2.png"))
-p3<-as.grob(image_read("img/descriptives/anscombe3.png"))
-p4<-as.grob(image_read("img/descriptives/anscombe4.png"))
+p1<-ggdraw()+draw_image("img/descriptives/anscombe1.png")
+p2<-ggdraw()+draw_image("img/descriptives/anscombe2.png")
+p3<-ggdraw()+draw_image("img/descriptives/anscombe3.png")
+p4<-ggdraw()+draw_image("img/descriptives/anscombe4.png")
 
-plot_grid(p1,p2, p3, p4,ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, p3, p4,ncol=2,scale=.95,label_size=12)
 ```
 
 ### スピアマンの順位相関係数
@@ -224,12 +224,12 @@ knitr::include_graphics("img/graphics/scatterplot3.png")
 
 回帰分析の基本的な考え方は相関と密接に関係しているので，再び[<span class="filename">parenthood.csv</span>](data/parenthood.csv)ファイルを使用しましょう。これは相関の仕組みを説明するのに使用したものです。このデータでは，なぜ私がいつもこんなに不機嫌なのかを調べようとしたのでした。そして，私たちの仮説は，その原因は私の睡眠時間が十分でないからだというものでした。そしていくつか散布図を作成して，私の睡眠時間と翌日の不機嫌さについての関係を検証しようとしました。それが図\@ref(fig:scatterplot2)です。そして，すでに見たように，そこには\(r=-.90\)という相関がありました。ただ，このとき，私たちは何となく図\@ref(fig:regression1)の(a)のようなものを想像したはずです。つまり，データの中央に心理的な線を引いていたのです。統計では，私たちが引いたこのような直線のことを<span class="keyterm">回帰直線</span>と呼びます。私たちはバカではありませんから，回帰直線を引くときはそれがデータの中心を通るようにします。図\@ref(fig:regression1)の(b)のような間抜けな線の引き方をする人はいないはずです。
 
-```{r regression1, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='図の(a)は，睡眠時間と不機嫌さの散布図（図12.9）に最良の回帰直線を重ね書きしたもの。当然ながら，直線はデータの中央を通る。これとは対照的に，図(b)は同じデータを示したものであるが，重ね書きした回帰直線は非常にあてはまりが悪い。'}
+```{r regression1, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.height=3,fig.align='center', fig.cap='図の(a)は，睡眠時間と不機嫌さの散布図（図12.9）に最良の回帰直線を重ね書きしたもの。当然ながら，直線はデータの中央を通る。これとは対照的に，図の(b)は同じデータを示したものであるが，重ね書きした回帰直線は非常にあてはまりが悪い。'}
 
-p1<-as.grob(image_read("img/regression/introPicGoodLine.png"))
-p2<-as.grob(image_read("img/regression/introPicBadLine.png"))
+p1<-ggdraw()+draw_image("img/regression/introPicGoodLine.png")
+p2<-ggdraw()+draw_image("img/regression/introPicBadLine.png")
 
-plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 ```
 
 ごく自然なことですよね。私が図\@ref(fig:regression1)の(b)に引いた線はデータにあまり「フィット」していませんから，データを要約する方法としてはあまり意味がないということになります。これはごく単純な観察ですが，ここにちょっとばかり数学をちりばめると，これが非常に強力なツールになるのです。そのために，まずは高校数学の復習といきましょう。直線の式は，通常は次のように書かれます。
@@ -256,12 +256,12 @@ $$  Y_i = b_0 + b_1 X_i + \epsilon_i  $$
 では，もう一度図を作成しましょう。ただし，今度はすべての観測値に残差の大きさを示す線を引いてみます。回帰直線がうまく引けていれば，残差（黒い実線の長さ）は図\@ref(fig:regression3)の(a)のように非常に小さなものになります。ですが，回帰直線がうまく引けていない場合，図\@ref(fig:regression3)の(b)のように残差が大きくなります。
 
 
-```{r regression3, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='データによくあてはまる回帰直線（図の(a)）の残差と，あてはまりの悪い回帰直線（図の(b)）の残差。残差は，あてはまりの良い回帰直線の方がはるかに小さい。あてはまりの良い回帰直線はデータの中央を通る線であるから，これは当然のことである。'}
+```{r regression3, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.height=3, fig.align='center', fig.cap='データによくあてはまる回帰直線(a)の残差と，あてはまりの悪い回帰直線(b)の残差。残差は，あてはまりの良い回帰直線の方がはるかに小さい。あてはまりの良い回帰直線はデータの中央を通る線であるから，これは当然のことである。'}
 
-p1<-as.grob(image_read("img/regression/introPicGoodSSE.png"))
-p2<-as.grob(image_read("img/regression/introPicBadSSE.png"))
+p1<-ggdraw()+draw_image("img/regression/introPicGoodSSE.png")
+p2<-ggdraw()+draw_image("img/regression/introPicBadSSE.png")
 
-plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.9,label_size=12)
+plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=.95,label_size=12)
 ```
 
 さて，私たちが回帰モデルに求めていることは，多分，残差が*小さい*ということですよね。そう，そのはずです。実際，「ベストフィット」する回帰直線というのは，残差が最も小さいものだとまで言えそうです。それに，統計学者というのは何でもかんでも2乗するのが好きですから，きっと次の様なことを言うはずです。
@@ -318,7 +318,7 @@ kable(dt, align = c('l','r')) %>%
 
 <span class="rtext">dan.sleep</span>（私の睡眠時間）に関連した係数が非常に大きくなっていることから，私の睡眠時間が減るほど私が不機嫌になるということが示唆されます。一方で，<span class="rtext">baby.sleep</span>（息子の睡眠時間）の係数は非常に小さいので，息子がどれだけよく寝るかは私が不機嫌かどうかにとってあまり重要でないということが示唆されます。つまり，私の不機嫌さに関して言う限り，*私*がどれだけ眠れるかが重要だということです。この重回帰モデルがどのようなものでなのかという感覚をつかんでもらうために，図\@ref(fig:multipleregression)には3つの変数すべてを使って3次元プロットを作成し，そこに回帰モデルを示しました。
 
-```{r multipleregression, warning=FALSE, echo=FALSE, out.width='82.4%', fig.align='center', fig.cap='重回帰モデルの視覚化。モデルには<span class="rtext">dan.sleep</span>と<span class="rtext">baby.sleep</span>という2つの予測変数があり、結果変数は<span class="rtext">dan.grump</span>である。これら3つの変数を1つの図で表そうとすると，3次元の空間が形成される。各観測値はこの空間内に青い点で示されている。単回帰モデルでは2次元平面内に直線が描かれるのと同じように，重回帰モデルでは3次元空間内に平面が形成される。この回帰分析で回帰係数を推定するということは，すべての青い点に可能な限り近い平面を見つけることである。'}
+```{r multipleregression, warning=FALSE, echo=FALSE, out.width='70.4%', fig.align='center', fig.cap='重回帰モデルの視覚化。モデルには<span class="rtext">dan.sleep</span>と<span class="rtext">baby.sleep</span>という2つの予測変数があり、結果変数は<span class="rtext">dan.grump</span>である。これら3つの変数を1つの図で表そうとすると，3次元の空間が形成される。各観測値はこの空間内に青い点で示されている。単回帰モデルでは2次元平面内に直線が描かれるのと同じように，重回帰モデルでは3次元空間内に平面が形成される。この回帰分析で回帰係数を推定するということは，すべての青い点に可能な限り近い平面を見つけることである。'}
 knitr::include_graphics("img/regression2/scatter3d_1.png")
 ```
 
@@ -612,10 +612,10 @@ knitr::include_graphics("img/regression/reg5.png")
 
 ```{r reg6, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.cap='<span class="jamovi">jamovi</span>の残差プロット'}
 
-p1<-as.grob(image_read("img/regression/reg6a.png"))
-p2<-as.grob(image_read("img/regression/reg6b.png"))
-p3<-as.grob(image_read("img/regression/reg6c.png"))
-p4<-as.grob(image_read("img/regression/reg6d.png"))
+p1<-ggdraw()+draw_image("img/regression/reg6a.png")
+p2<-ggdraw()+draw_image("img/regression/reg6b.png")
+p3<-ggdraw()+draw_image("img/regression/reg6c.png")
+p4<-ggdraw()+draw_image("img/regression/reg6d.png")
 
 plot_grid(p1,p2, p3,p4, labels=c("(a)", "(b)","(c)", "(d)"),ncol=2,scale=.9,label_size=12)
 ```

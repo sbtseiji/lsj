@@ -110,7 +110,7 @@ $$
 &=& \sum_{k=1}^G N_k \left( \overline{Y}_k - \overline{Y} \right)^2\end{aligned}  
 $$
 
-```{r anovavar, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=2, fig.cap='グループ間のばらつき（図の(a)）とグループ内のばらつき（図のb）。図(a)の矢印はグループ平均値の違いを示しており，図(b)の矢印は各グループ内でのばらつきを強調している。'}
+```{r anovavar, warning=FALSE, echo=FALSE, message=FALSE, out.width='82.4%', fig.align='center', fig.height=2, fig.cap='グループ間のばらつき(a)とグループ内のばらつき(b)。図の(a)の矢印はグループ平均値の違いを示しており，図の(b)の矢印は各グループ内でのばらつきを強調している。'}
 
 require(ggplot2); require(ggplotify); require(cowplot)
 p1<-ggdraw()+draw_image("img/anova/anovaBetween.png")
