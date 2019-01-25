@@ -114,7 +114,7 @@ $$
 
 require(ggplot2); require(ggplotify); require(cowplot)
 p1<-ggdraw()+draw_image("img/anova/anovaBetween.png")
-p2<-ggdraw()+draw_image("img/anova/anovaBetween.png")
+p2<-ggdraw()+draw_image("img/anova/anovaWithin.png")
 plot_grid(p1,p2, labels=c("(a)", "(b)"),ncol=2,scale=1,label_size=12)
 ```
 
